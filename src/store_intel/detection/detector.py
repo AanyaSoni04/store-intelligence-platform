@@ -1,14 +1,15 @@
 """
 Person detector — YOLOv8 wrapper.
-
-TODO: Implement PersonDetector class with:
-    - __init__(model_name, confidence_threshold): load YOLOv8 model
-    - detect(frame): run inference, filter to class=person, return detections
-    - Detection dataclass: bbox, confidence, class_id
 """
 
 import logging
 from dataclasses import dataclass
+import numpy as np
+
+try:
+    from ultralytics import YOLO
+except ImportError:
+    YOLO = None
 
 logger = logging.getLogger("store_intel")
 
@@ -25,8 +26,6 @@ class PersonDetector:
     """
     YOLOv8 person detector wrapper.
 
-    TODO: Implement using ultralytics.YOLO.
-
     Usage:
         detector = PersonDetector(model_name="yolov8n.pt", confidence=0.45)
         detections = detector.detect(frame)
@@ -35,16 +34,41 @@ class PersonDetector:
     def __init__(self, model_name: str = "yolov8n.pt", confidence: float = 0.45):
         self.model_name = model_name
         self.confidence = confidence
-        # TODO: Load YOLO model: self.model = YOLO(model_name)
+        
+        if YOLO is None:
+            raise ImportError("ultralytics is not installed. Please install it to use PersonDetector.")
+            
+        logger.info(f"Loading YOLO model: {model_name}")
+        self.model = YOLO(model_name)
+        # Suppress verbose output
+        self.model.verbose = False
 
-    def detect(self, frame) -> list[Detection]:
+    def detect(self, frame: np.ndarray) -> list[Detection]:
         """
         Run person detection on a single frame.
-
-        TODO: Implement:
-            - Run model inference
-            - Filter to class_id == 0 (person)
-            - Apply confidence threshold
-            - Return list of Detection objects
         """
-        raise NotImplementedError("PersonDetector not yet implemented")
+        # Run inference, restricting to class 0 (person)
+        # verbose=False reduces terminal spam
+        results = self.model.predict(frame, classes=[0], conf=self.confidence, verbose=False)
+        
+        detections = []
+        
+        # We only passed one frame, so there's one result
+        result = results[0]
+        
+        if result.boxes is not None:
+            for box in result.boxes:
+                # box.xyxy is shape (1, 4)
+                x1, y1, x2, y2 = box.xyxy[0].cpu().numpy()
+                conf = float(box.conf[0].cpu().numpy())
+                cls_id = int(box.cls[0].cpu().numpy())
+                
+                detections.append(
+                    Detection(
+                        bbox=(float(x1), float(y1), float(x2), float(y2)),
+                        confidence=conf,
+                        class_id=cls_id
+                    )
+                )
+                
+        return detections
