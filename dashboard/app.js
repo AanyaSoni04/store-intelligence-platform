@@ -25,8 +25,10 @@ const CONFIG = {
 // ── State ───────────────────────────────────────────────────
 
 let ws = null;
-let selectedStore = 'store_001';
+let selectedStore = 'test_store';
 let selectedWindow = '1h';
+let funnelChart = null;
+let heatmapChart = null;
 
 // ── DOM References ──────────────────────────────────────────
 
@@ -58,21 +60,93 @@ async function fetchMetrics() {
 }
 
 async function fetchFunnel() {
-    // TODO: Implement API call to /stores/{id}/funnel
-    // TODO: Update funnel Chart.js chart
-    console.log('TODO: Fetch and render funnel');
+    try {
+        const res = await fetch(`${CONFIG.apiBase}/stores/${selectedStore}/funnel?window=${selectedWindow}`);
+        if (!res.ok) throw new Error("Failed to fetch funnel");
+        const data = await res.json();
+        
+        if (funnelChart && data.stages) {
+            funnelChart.data.labels = data.stages.map(s => s.stage);
+            funnelChart.data.datasets[0].data = data.stages.map(s => s.count);
+            funnelChart.update();
+        }
+    } catch (err) {
+        console.error('Failed to fetch funnel:', err);
+    }
 }
 
 async function fetchHeatmap() {
-    // TODO: Implement API call to /stores/{id}/heatmap
-    // TODO: Update heatmap Chart.js chart
-    console.log('TODO: Fetch and render heatmap');
+    try {
+        const res = await fetch(`${CONFIG.apiBase}/stores/${selectedStore}/heatmap`);
+        if (!res.ok) throw new Error("Failed to fetch heatmap");
+        const data = await res.json();
+        
+        if (heatmapChart && data.zones) {
+            heatmapChart.data.labels = data.zones.map(z => z.zone_id);
+            heatmapChart.data.datasets[0].data = data.zones.map(z => z.visit_count);
+            heatmapChart.update();
+        }
+    } catch (err) {
+        console.error('Failed to fetch heatmap:', err);
+    }
 }
 
 async function fetchAnomalies() {
-    // TODO: Implement API call to /stores/{id}/anomalies
-    // TODO: Render anomaly alert cards
-    console.log('TODO: Fetch and render anomalies');
+    try {
+        const res = await fetch(`${CONFIG.apiBase}/stores/${selectedStore}/anomalies`);
+        if (!res.ok) throw new Error("Failed to fetch anomalies");
+        const data = await res.json();
+        
+        const listEl = document.getElementById('anomaly-list');
+        if (!listEl) return;
+        
+        if (!data.anomalies || data.anomalies.length === 0) {
+            listEl.innerHTML = '<p class="empty-state">No anomalies detected</p>';
+            return;
+        }
+        
+        listEl.innerHTML = data.anomalies.map(a => `
+            <div class="anomaly-item ${a.severity.toLowerCase()}">
+                <strong>${a.timestamp.substring(11,19)}</strong>: ${a.description}
+            </div>
+        `).join('');
+    } catch (err) {
+        console.error('Failed to fetch anomalies:', err);
+    }
+}
+
+function initCharts() {
+    const funnelCtx = document.getElementById('funnel-chart');
+    if (funnelCtx) {
+        funnelChart = new Chart(funnelCtx, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Visitors',
+                    data: [],
+                    backgroundColor: '#9d4edd',
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false }
+        });
+    }
+
+    const heatmapCtx = document.getElementById('heatmap-chart');
+    if (heatmapCtx) {
+        heatmapChart = new Chart(heatmapCtx, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Zone Visits',
+                    data: [],
+                    backgroundColor: '#ff9e00',
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y' }
+        });
+    }
 }
 
 // ── UI Updates ──────────────────────────────────────────────
@@ -89,12 +163,14 @@ function updateKPICards(metrics) {
 // ── WebSocket ───────────────────────────────────────────────
 
 function connectWebSocket() {
-    // TODO: Implement WebSocket connection with auto-reconnect
-    // TODO: Handle incoming event/metric updates
-    // TODO: Update connection status badge
-    console.log('TODO: WebSocket connection not yet implemented');
+    // Utilizing polling fallback for MVP
+    if (connectionStatus) {
+        connectionStatus.textContent = "Connected (Polling)";
+        connectionStatus.style.background = "rgba(46, 213, 115, 0.2)";
+        connectionStatus.style.color = "#2ed573";
+    }
 
-    // Fallback to polling
+    // Polling
     setInterval(() => {
         fetchMetrics();
         fetchFunnel();
@@ -123,6 +199,13 @@ if (windowSelector) {
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Store Intelligence Dashboard initialized');
+    initCharts();
+    
+    // Initial fetch
     fetchMetrics();
+    fetchFunnel();
+    fetchHeatmap();
+    fetchAnomalies();
+    
     connectWebSocket();
 });
