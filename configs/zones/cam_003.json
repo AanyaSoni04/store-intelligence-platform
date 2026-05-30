@@ -1,0 +1,17 @@
+{
+  "camera_id": "CAM3",
+  "description": "Store Entrance",
+  "zones": [
+    {
+      "zone_id": "entrance_zone",
+      "zone_type": "ENTRY_ZONE",
+      "zone_name": "Store Entrance",
+      "polygon": [
+        [0, 0],
+        [2000, 0],
+        [2000, 2000],
+        [0, 2000]
+      ]
+    }
+  ]
+}

@@ -27,6 +27,9 @@ class EventType(str, Enum):
     BILLING_QUEUE_JOIN = "BILLING_QUEUE_JOIN"
     BILLING_QUEUE_ABANDON = "BILLING_QUEUE_ABANDON"
     REENTRY = "REENTRY"
+    PURCHASE_PROXY = "PURCHASE_PROXY"
+    STAFF_DETECTED = "STAFF_DETECTED"
+    STAFF_EXCLUSION = "STAFF_EXCLUSION"
 
 
 # ════════════════════════════════════════════════════════════

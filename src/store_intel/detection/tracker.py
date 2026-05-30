@@ -41,14 +41,15 @@ class MultiObjectTracker:
         lost_track_buffer: int = 30,
         minimum_matching_threshold: float = 0.8,
     ):
-        if sv is None:
-            raise ImportError("supervision is not installed. Please install it to use MultiObjectTracker.")
-            
-        self.tracker = sv.ByteTrack(
-            track_activation_threshold=track_activation_threshold,
-            lost_track_buffer=lost_track_buffer,
-            minimum_matching_threshold=minimum_matching_threshold
-        )
+        if sv is not None:
+            self.tracker = sv.ByteTrack(
+                track_activation_threshold=track_activation_threshold,
+                lost_track_buffer=lost_track_buffer,
+                minimum_matching_threshold=minimum_matching_threshold
+            )
+        else:
+            logger.warning("supervision is not available. Falling back to synthetic tracker.")
+            self.tracker = None
         
         # Track age is not natively tracked by sv.ByteTrack output easily without custom state,
         # so we will keep our own mapping of track_id to age.

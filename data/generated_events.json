@@ -1,0 +1,314 @@
+[
+  {
+    "event_id": "7b77d6ad-4ffd-4f83-963f-9723b3c3c0cb",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_0ee8eaf364e6",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:56:58.571950Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "880febe8-f853-4425-839f-fc4061027765",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_0d58a01c6daf",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:56:59.072450Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "0467490d-076e-4596-96c7-835f5337a939",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_47a2ac8829e2",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:57:00.407117Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "cc3cb467-abeb-47b3-86a3-1505f61c64d0",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_f06873698b29",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:57:26.433117Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "bf74de13-5317-48d9-8a90-4522b84c5898",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_7b6943ebb6d7",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:57:28.101450Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "46da8fa9-9be7-4911-8431-e31f9fcccfa7",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_821b7c756fa3",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:57:29.936617Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "01a7d7b8-f62b-4f4a-bc8a-f00b12f175e5",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_8cf00426f749",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:57:47.120450Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "3ff2088c-8325-4bba-ae0a-5b0414030bfa",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_86244784134d",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:57:47.454117Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "1c6c29f1-d429-48d3-9603-bfdba8eae438",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_5c1b5b21a29a",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:57:49.289284Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "e7e5d924-1843-4d69-a116-44fc71d8f589",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_648dbb9592ad",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:57:53.793784Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "03112ba3-e065-4ead-8d8a-32d21c2847d0",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_ec8a8cbea5a0",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:58:01.468117Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "988c9295-2fb4-4abf-9895-cc87fd96f105",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_6c8dcc7a5a9b",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:58:03.470117Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "c1cbceb3-3c0d-4053-be63-f943449b2b66",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_a1ec56f8ffff",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:58:05.472117Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "7e5a1337-9e73-4676-b232-c0d9a1550bbc",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_6be5d8469888",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:58:10.977617Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "aa8cce46-c7c0-47fd-a85d-b9c600d9339d",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_dbfa41246462",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:58:13.813784Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "0f3cb25c-af7c-44ee-b793-15ec4b50c08b",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_086ee347f7b9",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:58:22.822784Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "c475b771-80f8-4989-8c43-5b701edbe9c0",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_3f456890fafd",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:58:25.492117Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "dbfcba66-e327-4263-8751-66e46fee8b5e",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_5f9df3968e3e",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:58:31.164450Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "89e18aad-1c09-49bd-9069-cc6d6ea1d3e7",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_44948cd3a5a4",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:58:33.833784Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "13c6567b-0a15-4a27-9069-4bf71f59744d",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_f35d770f0e20",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:58:34.667950Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "898336be-2cab-43f3-8819-cbef7b8fbf38",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_e0a820835cf3",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:58:40.006617Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "c14f1177-8e24-41d5-9725-a2e9a082218d",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_6558598d9937",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:58:40.673950Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "97eb2672-4f67-42e6-9816-ebef81d8e294",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_792d2d8e1003",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:59:10.537117Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "3338669b-7a47-4864-aa5a-69d670aac2f8",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_080faa3e308a",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:59:15.542117Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "d4368e74-8988-447c-87c2-607ce5623fd9",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_41f0376e24b3",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:59:18.211450Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  },
+  {
+    "event_id": "6219ae7b-8079-4c4a-9981-4b19f158e9a6",
+    "store_id": "test_store",
+    "camera_id": "CAM3",
+    "visitor_id": "v_bb7cdba1a125",
+    "event_type": "ENTRY",
+    "timestamp": "2026-05-30T11:59:22.549117Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "entrance_zone"
+    }
+  }
+]

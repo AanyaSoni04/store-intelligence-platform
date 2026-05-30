@@ -35,13 +35,14 @@ class PersonDetector:
         self.model_name = model_name
         self.confidence = confidence
         
-        if YOLO is None:
-            raise ImportError("ultralytics is not installed. Please install it to use PersonDetector.")
-            
-        logger.info(f"Loading YOLO model: {model_name}")
-        self.model = YOLO(model_name)
-        # Suppress verbose output
-        self.model.verbose = False
+        if YOLO is not None:
+            logger.info(f"Loading YOLO model: {model_name}")
+            self.model = YOLO(model_name)
+            # Suppress verbose output
+            self.model.verbose = False
+        else:
+            logger.warning("YOLO is not available. Falling back to synthetic detections.")
+            self.model = None
 
     def detect(self, frame: np.ndarray) -> list[Detection]:
         """
