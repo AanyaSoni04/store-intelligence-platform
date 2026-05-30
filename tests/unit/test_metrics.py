@@ -1,18 +1,10 @@
 """
 Unit tests for analytics metrics computation.
-
-TODO: Implement tests when compute_metrics is built:
-    - test_unique_visitors_count
-    - test_conversion_rate_calculation
-    - test_avg_dwell_time
-    - test_queue_depth
-    - test_abandonment_rate
-    - test_staff_excluded_from_metrics
-    - test_empty_store_returns_zeros
-    - test_window_filtering
 """
 
-from store_intel.analytics.metrics import parse_window
+from store_intel.analytics.metrics import parse_window, compute_metrics
+from store_intel.analytics.funnel import compute_funnel
+from store_intel.analytics.heatmap import compute_heatmap
 
 
 class TestMetrics:
@@ -28,7 +20,23 @@ class TestMetrics:
         assert parse_window("1d") == 86400
 
     def test_parse_window_default(self):
-        """Unknown window should default to 1h."""
         assert parse_window("unknown") == 3600
 
-    # TODO: Add metric computation tests once compute_metrics is implemented
+    def test_compute_metrics_empty(self, db_session, sample_store):
+        metrics = compute_metrics(db_session, sample_store.store_id, "1h")
+        assert metrics.unique_visitors == 0
+        assert metrics.conversion_rate == 0.0
+        assert metrics.avg_dwell_seconds == 0.0
+        assert metrics.queue_depth == 0
+        assert metrics.abandonment_rate == 0.0
+
+    def test_compute_funnel_empty(self, db_session, sample_store):
+        funnel = compute_funnel(db_session, sample_store.store_id, "1h")
+        assert len(funnel.stages) == 4
+        assert all(s.count == 0 for s in funnel.stages)
+        assert len(funnel.drop_off_rates) == 3
+        assert all(v == 0.0 for v in funnel.drop_off_rates.values())
+
+    def test_compute_heatmap_empty(self, db_session, sample_store):
+        heatmap = compute_heatmap(db_session, sample_store.store_id, "1h")
+        assert len(heatmap.zones) == 0

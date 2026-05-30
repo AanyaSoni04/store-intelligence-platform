@@ -1,21 +1,15 @@
 """
-Unit tests for anomaly detection.
-
-TODO: Implement tests when anomaly detection is built:
-    - test_unusual_dwell_detected
-    - test_normal_dwell_no_anomaly
-    - test_queue_buildup_detected
-    - test_empty_store_detected
-    - test_high_abandonment_detected
-    - test_severity_filtering
-    - test_no_anomalies_in_normal_data
+Unit tests for anomalies computation.
 """
+
+from store_intel.analytics.anomalies import detect_anomalies
 
 
 class TestAnomalyDetection:
-    """Tests for rule-based anomaly detection."""
+    """Tests for anomaly detection logic."""
 
-    def test_placeholder(self):
-        """Placeholder — remove when anomaly detection is implemented."""
-        # TODO: Replace with real anomaly detection tests
-        assert True
+    def test_empty_store_stale_feed(self, db_session, sample_store):
+        # Empty store should not alert stale feed unless it had previous events
+        response = detect_anomalies(db_session, sample_store.store_id)
+        assert len(response.anomalies) == 0
+
