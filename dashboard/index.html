@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Store Intelligence System — Real-time retail analytics dashboard">
+    <title>Store Intelligence Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app" id="app">
+        <!-- Header -->
+        <header class="header" id="header">
+            <h1>Store Intelligence</h1>
+            <div class="header-controls">
+                <select id="store-selector">
+                    <option value="store_001">Store 001</option>
+                </select>
+                <select id="window-selector">
+                    <option value="1h">Last 1 Hour</option>
+                    <option value="1d">Last 24 Hours</option>
+                    <option value="7d">Last 7 Days</option>
+                </select>
+                <span class="status-badge" id="connection-status">Disconnected</span>
+            </div>
+        </header>
+
+        <!-- KPI Cards -->
+        <section class="kpi-grid" id="kpi-grid">
+            <!-- TODO: Populate with real-time KPI data via WebSocket -->
+            <div class="kpi-card" id="kpi-visitors">
+                <span class="kpi-label">Unique Visitors</span>
+                <span class="kpi-value" id="kpi-visitors-value">—</span>
+            </div>
+            <div class="kpi-card" id="kpi-conversion">
+                <span class="kpi-label">Conversion Rate</span>
+                <span class="kpi-value" id="kpi-conversion-value">—</span>
+            </div>
+            <div class="kpi-card" id="kpi-dwell">
+                <span class="kpi-label">Avg Dwell Time</span>
+                <span class="kpi-value" id="kpi-dwell-value">—</span>
+            </div>
+            <div class="kpi-card" id="kpi-queue">
+                <span class="kpi-label">Queue Depth</span>
+                <span class="kpi-value" id="kpi-queue-value">—</span>
+            </div>
+            <div class="kpi-card" id="kpi-abandonment">
+                <span class="kpi-label">Abandonment Rate</span>
+                <span class="kpi-value" id="kpi-abandonment-value">—</span>
+            </div>
+        </section>
+
+        <!-- Charts Row -->
+        <section class="charts-grid" id="charts-grid">
+            <!-- TODO: Initialize Chart.js charts -->
+            <div class="chart-card" id="funnel-chart-card">
+                <h2>Visitor Funnel</h2>
+                <canvas id="funnel-chart"></canvas>
+            </div>
+            <div class="chart-card" id="heatmap-chart-card">
+                <h2>Zone Heatmap</h2>
+                <canvas id="heatmap-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- Anomaly Feed -->
+        <section class="anomaly-feed" id="anomaly-feed">
+            <h2>Anomaly Alerts</h2>
+            <div class="anomaly-list" id="anomaly-list">
+                <!-- TODO: Populate with real-time anomaly alerts -->
+                <p class="empty-state">No anomalies detected</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- TODO: Add Chart.js from CDN when implementing charts -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <script src="app.js"></script>
+</body>
+</html>

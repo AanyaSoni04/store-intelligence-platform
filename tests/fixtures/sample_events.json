@@ -1,0 +1,52 @@
+[
+    {
+        "event_id": "evt_001",
+        "store_id": "test_store_001",
+        "camera_id": "cam_001",
+        "visitor_id": "v_test_001",
+        "event_type": "ENTRY",
+        "timestamp": "2026-05-30T10:00:00Z",
+        "confidence": 0.92,
+        "metadata": {"bbox": [100, 200, 150, 350], "gate_id": "main_entrance", "group_size": 1}
+    },
+    {
+        "event_id": "evt_002",
+        "store_id": "test_store_001",
+        "camera_id": "cam_001",
+        "visitor_id": "v_test_001",
+        "event_type": "ZONE_ENTER",
+        "timestamp": "2026-05-30T10:01:00Z",
+        "confidence": 0.88,
+        "metadata": {"zone_id": "electronics", "zone_name": "Electronics Aisle"}
+    },
+    {
+        "event_id": "evt_003",
+        "store_id": "test_store_001",
+        "camera_id": "cam_001",
+        "visitor_id": "v_test_001",
+        "event_type": "ZONE_EXIT",
+        "timestamp": "2026-05-30T10:05:00Z",
+        "confidence": 0.85,
+        "metadata": {"zone_id": "electronics", "zone_name": "Electronics Aisle", "dwell_seconds": 240.0}
+    },
+    {
+        "event_id": "evt_004",
+        "store_id": "test_store_001",
+        "camera_id": "cam_001",
+        "visitor_id": "v_test_001",
+        "event_type": "BILLING_QUEUE_JOIN",
+        "timestamp": "2026-05-30T10:06:00Z",
+        "confidence": 0.90,
+        "metadata": {"queue_id": "checkout_1", "queue_position": 2}
+    },
+    {
+        "event_id": "evt_005",
+        "store_id": "test_store_001",
+        "camera_id": "cam_001",
+        "visitor_id": "v_test_001",
+        "event_type": "EXIT",
+        "timestamp": "2026-05-30T10:10:00Z",
+        "confidence": 0.91,
+        "metadata": {"total_dwell_seconds": 600.0, "zones_visited": ["electronics"]}
+    }
+]

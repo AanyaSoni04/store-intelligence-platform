@@ -1,0 +1,28 @@
+# ============================================================
+# Store Intelligence System — Docker Compose
+# ============================================================
+
+services:
+  api:
+    build: .
+    container_name: store-intel-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data          # Persist SQLite database
+      - ./configs:/app/configs    # Zone configuration files
+    environment:
+      - DATABASE_URL=sqlite:///data/store_intel.db
+      - LOG_LEVEL=INFO
+      - ENVIRONMENT=development
+    restart: unless-stopped
+
+    # TODO: Add pipeline worker service when detection is implemented
+    # pipeline:
+    #   build: .
+    #   command: python -m scripts.run_pipeline --video /data/input.mp4
+    #   volumes:
+    #     - ./data:/app/data
+    #     - ./configs:/app/configs
+    #   depends_on:
+    #     - api

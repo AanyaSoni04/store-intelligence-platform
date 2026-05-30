@@ -1,0 +1,36 @@
+{
+    "camera_id": "cam_001",
+    "description": "Main entrance camera — sample zone configuration",
+    "zones": [
+        {
+            "zone_id": "main_entrance",
+            "zone_type": "ENTRY_LINE",
+            "zone_name": "Main Entrance",
+            "points": [[100, 400], [500, 400]]
+        },
+        {
+            "zone_id": "main_exit",
+            "zone_type": "EXIT_LINE",
+            "zone_name": "Main Exit",
+            "points": [[100, 420], [500, 420]]
+        },
+        {
+            "zone_id": "electronics",
+            "zone_type": "AISLE",
+            "zone_name": "Electronics Aisle",
+            "polygon": [[50, 50], [250, 50], [250, 300], [50, 300]]
+        },
+        {
+            "zone_id": "clothing",
+            "zone_type": "AISLE",
+            "zone_name": "Clothing Section",
+            "polygon": [[300, 50], [550, 50], [550, 300], [300, 300]]
+        },
+        {
+            "zone_id": "checkout_1",
+            "zone_type": "BILLING",
+            "zone_name": "Checkout Counter 1",
+            "polygon": [[50, 320], [250, 320], [250, 390], [50, 390]]
+        }
+    ]
+}
