@@ -1,35 +1,13 @@
 """
 Zone manager — polygon hit-testing and line-crossing detection.
-
-TODO: Implement ZoneManager class with:
-    - load_zones(config_path): load polygon definitions from JSON
-    - check_zones(centroid): return list of zone_ids the point is inside
-    - check_line_crossing(prev_centroid, curr_centroid): detect entry/exit line crossings
-    - Zone types: ENTRY_LINE, EXIT_LINE, AISLE, DISPLAY, BILLING, RESTRICTED
-
-Zone config JSON format (per camera):
-    {
-        "camera_id": "cam_001",
-        "zones": [
-            {
-                "zone_id": "main_entrance",
-                "zone_type": "ENTRY_LINE",
-                "points": [[x1,y1], [x2,y2]]
-            },
-            {
-                "zone_id": "electronics",
-                "zone_type": "AISLE",
-                "zone_name": "Electronics Aisle",
-                "polygon": [[x1,y1], [x2,y2], [x3,y3], ...]
-            }
-        ]
-    }
 """
 
 import json
 import logging
 from dataclasses import dataclass, field
 from pathlib import Path
+
+from shapely.geometry import Point, Polygon, LineString
 
 logger = logging.getLogger("store_intel")
 
@@ -40,8 +18,22 @@ class Zone:
     zone_id: str
     zone_type: str         # ENTRY_LINE, EXIT_LINE, AISLE, DISPLAY, BILLING, RESTRICTED
     zone_name: str = ""
-    polygon: list = field(default_factory=list)   # list of [x, y] points
-    points: list = field(default_factory=list)     # for lines: exactly 2 points
+    points: list = field(default_factory=list)     # list of [x, y] points
+    
+    # Internal shapely objects
+    _polygon: Polygon | None = field(init=False, repr=False, default=None)
+    _line: LineString | None = field(init=False, repr=False, default=None)
+
+    def __post_init__(self):
+        if not self.points:
+            return
+            
+        if self.zone_type in ("ENTRY_LINE", "EXIT_LINE"):
+            if len(self.points) == 2:
+                self._line = LineString(self.points)
+        else:
+            if len(self.points) >= 3:
+                self._polygon = Polygon(self.points)
 
 
 @dataclass
@@ -55,8 +47,6 @@ class ZoneManager:
     """
     Manages zone polygons and line-crossing detection for a camera.
 
-    TODO: Implement using Shapely for polygon operations.
-
     Usage:
         zm = ZoneManager("configs/zones/cam_001.json")
         zone_hits = zm.check_zones((cx, cy))
@@ -65,19 +55,11 @@ class ZoneManager:
 
     def __init__(self, config_path: str | None = None):
         self.zones: list[Zone] = []
-        # TODO: Initialize Shapely polygon objects
         if config_path:
             self.load_zones(config_path)
 
     def load_zones(self, config_path: str) -> None:
-        """
-        Load zone definitions from a JSON config file.
-
-        TODO: Implement:
-            - Parse JSON file
-            - Create Shapely Polygon objects for polygon zones
-            - Create Shapely LineString objects for line zones
-        """
+        """Load zone definitions from a JSON config file."""
         path = Path(config_path)
         if not path.exists():
             logger.warning("Zone config not found", extra={"path": config_path})
@@ -87,6 +69,10 @@ class ZoneManager:
             config = json.load(f)
 
         for zone_data in config.get("zones", []):
+            # Map 'polygon' key to 'points' if present in older configs
+            if "polygon" in zone_data and "points" not in zone_data:
+                zone_data["points"] = zone_data.pop("polygon")
+            
             self.zones.append(Zone(**zone_data))
 
         logger.info("Zones loaded", extra={"count": len(self.zones), "path": config_path})
@@ -95,13 +81,17 @@ class ZoneManager:
         """
         Check which polygon zones contain the given centroid.
 
-        TODO: Implement using Shapely Point.within(Polygon).
-
         Returns:
             List of zone_ids the centroid is inside.
         """
-        # TODO: Implement polygon containment checks
-        raise NotImplementedError("Zone containment check not yet implemented")
+        p = Point(centroid)
+        active_zones = []
+        
+        for z in self.zones:
+            if z._polygon and z._polygon.contains(p):
+                active_zones.append(z.zone_id)
+                
+        return active_zones
 
     def check_line_crossing(
         self,
@@ -111,10 +101,33 @@ class ZoneManager:
         """
         Check if movement from prev to curr crosses any entry/exit lines.
 
-        TODO: Implement using cross-product sign to determine direction.
-
         Returns:
             List of LineCrossing results (zone_id + direction).
         """
-        # TODO: Implement line crossing detection
-        raise NotImplementedError("Line crossing detection not yet implemented")
+        if prev_centroid == curr_centroid:
+            return []
+            
+        move_line = LineString([prev_centroid, curr_centroid])
+        crossings = []
+        
+        for z in self.zones:
+            if z._line and move_line.intersects(z._line):
+                # Calculate cross product to determine direction
+                # v1 is the zone line vector
+                # v2 is the movement vector
+                p1, p2 = z.points[0], z.points[1]
+                v1_x = p2[0] - p1[0]
+                v1_y = p2[1] - p1[1]
+                
+                v2_x = curr_centroid[0] - prev_centroid[0]
+                v2_y = curr_centroid[1] - prev_centroid[1]
+                
+                # 2D cross product: v1_x*v2_y - v1_y*v2_x
+                cross = v1_x * v2_y - v1_y * v2_x
+                
+                # By convention, assume cross > 0 is inward relative to how the line is drawn
+                direction = "inward" if cross > 0 else "outward"
+                
+                crossings.append(LineCrossing(zone_id=z.zone_id, direction=direction))
+                
+        return crossings
