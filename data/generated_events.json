@@ -1,23 +1,35 @@
 [
   {
-    "event_id": "31e86cba-3ac2-4054-a18b-e9ef5c98b3fc",
+    "event_id": "b9896fad-bea7-41b1-81f2-d2c5bce68180",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_e7ce15878f78",
-    "event_type": "BILLING_QUEUE_JOIN",
-    "timestamp": "2026-05-30T14:21:29.230743Z",
+    "visitor_id": "v_b8bc1aee6ff2",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:44:27.854471Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue"
     }
   },
   {
-    "event_id": "094f88b0-90bb-4f9a-aa3b-dbb8cee90f3f",
+    "event_id": "a5b5d142-19f4-4aaf-8cd2-55ab5602957a",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_e7ce15878f78",
-    "event_type": "BILLING_QUEUE_ABANDON",
-    "timestamp": "2026-05-30T14:21:31.312289Z",
+    "visitor_id": "v_b8bc1aee6ff2",
+    "event_type": "BILLING_QUEUE_JOIN",
+    "timestamp": "2026-05-30T14:44:27.854471Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue"
+    }
+  },
+  {
+    "event_id": "905028d6-5254-4f96-b0fe-d769dab6238c",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_b8bc1aee6ff2",
+    "event_type": "ZONE_EXIT",
+    "timestamp": "2026-05-30T14:44:29.936017Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue",
@@ -25,24 +37,49 @@
     }
   },
   {
-    "event_id": "4e1efd5e-9eb2-4b6f-9ec0-3022200a56e5",
+    "event_id": "c00d74de-72a2-4ae3-b683-e93c6eff122c",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_208f4d8d57fe",
-    "event_type": "BILLING_QUEUE_JOIN",
-    "timestamp": "2026-05-30T14:21:31.472408Z",
+    "visitor_id": "v_b8bc1aee6ff2",
+    "event_type": "BILLING_QUEUE_ABANDON",
+    "timestamp": "2026-05-30T14:44:29.936017Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue",
+      "dwell_seconds": 2.081546
+    }
+  },
+  {
+    "event_id": "a64cc761-94ad-4492-9adb-9426a9c35348",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_a072b94d1614",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:44:30.096136Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue"
     }
   },
   {
-    "event_id": "cb2d78ad-9aa3-4e6a-99be-faccdf5c030f",
+    "event_id": "ef052cc8-f0c0-4e53-ba00-d36bfa5d798f",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_208f4d8d57fe",
-    "event_type": "BILLING_QUEUE_ABANDON",
-    "timestamp": "2026-05-30T14:21:32.433121Z",
+    "visitor_id": "v_a072b94d1614",
+    "event_type": "BILLING_QUEUE_JOIN",
+    "timestamp": "2026-05-30T14:44:30.096136Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue"
+    }
+  },
+  {
+    "event_id": "1c48a0e8-d993-4430-9196-fe93080a14e4",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_a072b94d1614",
+    "event_type": "ZONE_EXIT",
+    "timestamp": "2026-05-30T14:44:31.056849Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue",
@@ -50,24 +87,49 @@
     }
   },
   {
-    "event_id": "2c7c69d9-698f-4448-8a66-7e49a29196a5",
+    "event_id": "ddcbb646-eb64-44a8-849e-02b04a145ff5",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_5d2a0ab3aee6",
-    "event_type": "BILLING_QUEUE_JOIN",
-    "timestamp": "2026-05-30T14:21:32.593240Z",
+    "visitor_id": "v_a072b94d1614",
+    "event_type": "BILLING_QUEUE_ABANDON",
+    "timestamp": "2026-05-30T14:44:31.056849Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue",
+      "dwell_seconds": 0.960713
+    }
+  },
+  {
+    "event_id": "84e389b4-e220-44aa-9de5-96575abc9827",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_82f098474d07",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:44:31.216968Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue"
     }
   },
   {
-    "event_id": "c18703c0-8134-4a2d-afae-925533bd5507",
+    "event_id": "daefb47a-bc04-4798-b2d1-f7b4b7d2b2a6",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_5d2a0ab3aee6",
-    "event_type": "BILLING_QUEUE_ABANDON",
-    "timestamp": "2026-05-30T14:21:32.753359Z",
+    "visitor_id": "v_82f098474d07",
+    "event_type": "BILLING_QUEUE_JOIN",
+    "timestamp": "2026-05-30T14:44:31.216968Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue"
+    }
+  },
+  {
+    "event_id": "2ae7cf0e-b862-476d-938b-bed10728d6ab",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_82f098474d07",
+    "event_type": "ZONE_EXIT",
+    "timestamp": "2026-05-30T14:44:31.377087Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue",
@@ -75,24 +137,49 @@
     }
   },
   {
-    "event_id": "0186e03c-a6b6-4edb-b7c9-9a70b2138055",
+    "event_id": "9a7029e1-c7b7-4b5c-b2a9-55eaef6c0e7c",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_f2920a91acb8",
-    "event_type": "BILLING_QUEUE_JOIN",
-    "timestamp": "2026-05-30T14:21:34.674786Z",
+    "visitor_id": "v_82f098474d07",
+    "event_type": "BILLING_QUEUE_ABANDON",
+    "timestamp": "2026-05-30T14:44:31.377087Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue",
+      "dwell_seconds": 0.160119
+    }
+  },
+  {
+    "event_id": "ffcc5c33-8166-4718-a11a-a15204afb6f2",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_8944feb134f2",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:44:33.298514Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue"
     }
   },
   {
-    "event_id": "2500c624-7f6a-4947-8fdb-ca739fc7329f",
+    "event_id": "f22d2a45-eafb-4478-b5c8-38a0a564cf10",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_f2920a91acb8",
-    "event_type": "BILLING_QUEUE_ABANDON",
-    "timestamp": "2026-05-30T14:21:35.315261Z",
+    "visitor_id": "v_8944feb134f2",
+    "event_type": "BILLING_QUEUE_JOIN",
+    "timestamp": "2026-05-30T14:44:33.298514Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue"
+    }
+  },
+  {
+    "event_id": "11019ba5-353c-411a-8733-6a1187c251f8",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_8944feb134f2",
+    "event_type": "ZONE_EXIT",
+    "timestamp": "2026-05-30T14:44:33.938989Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue",
@@ -100,24 +187,49 @@
     }
   },
   {
-    "event_id": "bc21c1a8-14bc-4542-83ea-b352b17f1385",
+    "event_id": "3a45ca2a-d6ed-43f1-b5d5-0e7498336508",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_f2920a91acb8",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:21:35.475380Z",
+    "visitor_id": "v_8944feb134f2",
+    "event_type": "BILLING_QUEUE_ABANDON",
+    "timestamp": "2026-05-30T14:44:33.938989Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue",
+      "dwell_seconds": 0.640475
+    }
+  },
+  {
+    "event_id": "94119be5-5101-41ac-b99a-bf71eb14fbaf",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_8944feb134f2",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:44:34.099108Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "4c30d3c9-0414-489a-95a2-a6b09d43b2a5",
+    "event_id": "88e06dae-7882-4ea7-a949-ea2422533f65",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_f2920a91acb8",
+    "visitor_id": "v_8944feb134f2",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:44:34.099108Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "49eaaf66-aee9-46c2-86ab-a66417f87cc6",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_8944feb134f2",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:21:36.436094Z",
+    "timestamp": "2026-05-30T14:44:35.059822Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -125,36 +237,60 @@
     }
   },
   {
-    "event_id": "862ddbd7-6d5a-471b-8842-2619b53637a8",
+    "event_id": "631534ae-7752-4acb-99ec-0880957928d3",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_ac0247993197",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:21:37.076569Z",
+    "visitor_id": "v_94a4c5b672ab",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:44:35.700297Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "5ad92637-be3d-465d-92c2-d738607da5af",
+    "event_id": "3f8c759a-4dd0-4070-a103-542e14f61a04",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_792086ff8548",
+    "visitor_id": "v_94a4c5b672ab",
     "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:21:39.158115Z",
+    "timestamp": "2026-05-30T14:44:35.700297Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "b5fd738a-a586-4ab2-9aca-a9085e0aa351",
+    "event_id": "5ff8dd12-577b-4b80-97bd-b5c4900e9eed",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_ac0247993197",
+    "visitor_id": "v_4d1f4e0d269e",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:44:37.781843Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "835a6884-ce4e-40b3-b66d-d8913bc8e6d8",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_4d1f4e0d269e",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:44:37.781843Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "563b76a9-5e30-4f40-8444-d0de5802889b",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_94a4c5b672ab",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:21:39.318234Z",
+    "timestamp": "2026-05-30T14:44:37.941962Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -162,12 +298,12 @@
     }
   },
   {
-    "event_id": "33d9e0c5-ecfd-466b-800b-33b7ace9ece3",
+    "event_id": "a34c5663-23e0-42f2-83dc-c154039e8527",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_792086ff8548",
+    "visitor_id": "v_4d1f4e0d269e",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:21:39.318234Z",
+    "timestamp": "2026-05-30T14:44:37.941962Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -175,36 +311,60 @@
     }
   },
   {
-    "event_id": "626687dd-d79c-4715-b96a-c9326fe95e61",
+    "event_id": "2cc9a119-f2d7-477d-96cd-69bffa250c97",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_c5c10cc9e03f",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:21:39.478353Z",
+    "visitor_id": "v_20dcc11d23a0",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:44:38.102081Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "26b58094-b000-4685-b4f8-5950fbbdc1e2",
+    "event_id": "11f150bd-74cd-404e-8338-56b287e81fb9",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_db73202c5d30",
+    "visitor_id": "v_20dcc11d23a0",
     "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:21:43.641444Z",
+    "timestamp": "2026-05-30T14:44:38.102081Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "e193c44b-e2e3-4394-b6c2-8ea1db9dd83d",
+    "event_id": "1ae24ed6-2d9d-4695-82a4-9b7544d9cb77",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_db73202c5d30",
+    "visitor_id": "v_18ffe2b19f3f",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:44:42.265172Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "b14aabbd-38de-470f-8b52-43cfe4430143",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_18ffe2b19f3f",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:44:42.265172Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "d80fd2aa-9ff4-43bf-80bd-3856b1bac5e1",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_18ffe2b19f3f",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:21:43.801563Z",
+    "timestamp": "2026-05-30T14:44:42.425291Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -212,24 +372,36 @@
     }
   },
   {
-    "event_id": "963518e8-4a24-417b-87b8-1f92fc751f75",
+    "event_id": "d0b4e0a4-3a3f-4057-b3e8-340a8b5ce64b",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_7922605eac1a",
-    "event_type": "BILLING_QUEUE_JOIN",
-    "timestamp": "2026-05-30T14:21:47.484298Z",
+    "visitor_id": "v_3f9ab5b21811",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:44:46.108026Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue"
     }
   },
   {
-    "event_id": "a0e63ebf-67ba-4fd7-9a35-3075aa530b1d",
+    "event_id": "d50f7d20-0657-46a9-8305-1acd79978b03",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_7922605eac1a",
-    "event_type": "BILLING_QUEUE_ABANDON",
-    "timestamp": "2026-05-30T14:21:49.085487Z",
+    "visitor_id": "v_3f9ab5b21811",
+    "event_type": "BILLING_QUEUE_JOIN",
+    "timestamp": "2026-05-30T14:44:46.108026Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue"
+    }
+  },
+  {
+    "event_id": "dfb42088-44f5-450f-82ad-242c36425e06",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_3f9ab5b21811",
+    "event_type": "ZONE_EXIT",
+    "timestamp": "2026-05-30T14:44:47.709215Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue",
@@ -237,24 +409,49 @@
     }
   },
   {
-    "event_id": "630034a1-2729-4e2e-a93f-50c8c5d31680",
+    "event_id": "bb4b7f1a-7732-45f5-9311-9392962e3cc0",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_afae15cba306",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:21:49.405725Z",
+    "visitor_id": "v_3f9ab5b21811",
+    "event_type": "BILLING_QUEUE_ABANDON",
+    "timestamp": "2026-05-30T14:44:47.709215Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue",
+      "dwell_seconds": 1.601189
+    }
+  },
+  {
+    "event_id": "0558d221-d020-48e1-9e99-e81283d85e58",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_466660e45cd6",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:44:48.029453Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "5ec45a8e-b565-4247-9b1d-8db9182cb97e",
+    "event_id": "55bee778-90a3-49ce-a069-01aafa35e4ff",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_c5c10cc9e03f",
+    "visitor_id": "v_466660e45cd6",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:44:48.029453Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "e96338fc-bac0-436f-8502-fe71929395c5",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_20dcc11d23a0",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:05.577734Z",
+    "timestamp": "2026-05-30T14:45:04.201462Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -262,24 +459,36 @@
     }
   },
   {
-    "event_id": "35eb9165-c482-45fd-bd99-8529f2cc2543",
+    "event_id": "fb374b29-663a-471b-9798-3474c4f0661e",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_4225d3b8c634",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:05.737853Z",
+    "visitor_id": "v_b632603b1383",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:04.361581Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "565a3287-a43b-468c-ae57-73f5a8230a92",
+    "event_id": "902e1ad5-eeed-495d-bf0e-da63182cb2c6",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_4225d3b8c634",
+    "visitor_id": "v_b632603b1383",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:04.361581Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "d9959254-9180-4da8-be5e-5d50e44cbbd0",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_b632603b1383",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:05.897972Z",
+    "timestamp": "2026-05-30T14:45:04.521700Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -287,24 +496,36 @@
     }
   },
   {
-    "event_id": "ce6b1af8-6261-4edc-87e2-5ae21ef29589",
+    "event_id": "6a79620f-488b-4511-a9af-f618018bcbb8",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_26b611e3ded0",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:06.058091Z",
+    "visitor_id": "v_5e6d1c1dd6a9",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:04.681819Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "2f6998a7-1835-458e-9892-562f94770b7e",
+    "event_id": "e4e1839d-e14b-4e4e-8dc5-23df9ebd239f",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_26b611e3ded0",
+    "visitor_id": "v_5e6d1c1dd6a9",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:04.681819Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "2946f535-68a3-47af-8028-b0db348bc50c",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_5e6d1c1dd6a9",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:06.218210Z",
+    "timestamp": "2026-05-30T14:45:04.841938Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -312,24 +533,36 @@
     }
   },
   {
-    "event_id": "9aa538e5-5fa7-4ac9-9f15-e64fbb18602f",
+    "event_id": "d9d8e4e3-03fd-4f14-9a43-5dfd33933bae",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_7620c64d6ed8",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:06.378328Z",
+    "visitor_id": "v_e5ce222c25ce",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:05.002056Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "9f81a1c4-0385-49ad-a091-3c5df2c13b94",
+    "event_id": "4b049bd8-e9d3-469c-9aef-85b33e8f4435",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_7620c64d6ed8",
+    "visitor_id": "v_e5ce222c25ce",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:05.002056Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "96c8bb67-5445-4705-bce7-1ef43f78427f",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_e5ce222c25ce",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:06.698566Z",
+    "timestamp": "2026-05-30T14:45:05.322294Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -337,24 +570,36 @@
     }
   },
   {
-    "event_id": "8075332e-673f-42fa-9ff1-78f547388cdd",
+    "event_id": "48dfd97d-461f-40b0-bec7-c92f5fa3cd55",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_9f6c26013378",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:06.858685Z",
+    "visitor_id": "v_75531023127a",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:05.482413Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "3c5fb703-32db-4cb7-9167-1d062526ec31",
+    "event_id": "2cf57ab7-120c-4c09-b07a-d9c20f85095b",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_9f6c26013378",
+    "visitor_id": "v_75531023127a",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:05.482413Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "8f1ee09e-834a-4ee5-b2cc-5e14665af91e",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_75531023127a",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:08.459874Z",
+    "timestamp": "2026-05-30T14:45:07.083602Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -362,24 +607,36 @@
     }
   },
   {
-    "event_id": "d9e6efc8-8121-4a1f-8eb2-7bc48a3df9a2",
+    "event_id": "26c7cd9e-9ffb-43b0-8d69-639b31347007",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_81ca3dc15414",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:08.619993Z",
+    "visitor_id": "v_9466f9b04a28",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:07.243721Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "d1049d5f-2a49-4765-870c-3fbf4e398039",
+    "event_id": "ad0695a9-2fa9-4482-9a2c-96c639cdfc33",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_81ca3dc15414",
+    "visitor_id": "v_9466f9b04a28",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:07.243721Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "f69e214f-1f65-48fa-950e-e14f3374b013",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_9466f9b04a28",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:08.940231Z",
+    "timestamp": "2026-05-30T14:45:07.563959Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -387,24 +644,36 @@
     }
   },
   {
-    "event_id": "62caca87-046d-4023-bde5-356ec9f3704a",
+    "event_id": "df73cddd-ca8c-4ac7-aa47-fc63a2802c7c",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_4557e3806b2e",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:09.100350Z",
+    "visitor_id": "v_1db747297992",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:07.724078Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "8ea18076-60b9-4366-8b0f-133fbf5687ee",
+    "event_id": "e40c8d76-a8f9-4bbd-aec2-cf3d8d2d461d",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_4557e3806b2e",
+    "visitor_id": "v_1db747297992",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:07.724078Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "ebf2d2f0-2b02-4f2e-89a5-464818195ad8",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_1db747297992",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:09.580707Z",
+    "timestamp": "2026-05-30T14:45:08.204435Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -412,24 +681,36 @@
     }
   },
   {
-    "event_id": "127efd33-b8c3-41a3-808c-36c6382cde8e",
+    "event_id": "a3a87bb2-7015-41e3-91f8-df44c4c65d0a",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_07482c8d0c15",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:09.740825Z",
+    "visitor_id": "v_2355e590ab0c",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:08.364553Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "7159de26-f8b8-4399-b9eb-0893c2c7ec97",
+    "event_id": "7d28defe-5a8b-4b51-8c1d-8973d9274e5f",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_07482c8d0c15",
+    "visitor_id": "v_2355e590ab0c",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:08.364553Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "c8aef9a9-3ae7-41e0-b0b4-bf5672337c0a",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_2355e590ab0c",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:09.900944Z",
+    "timestamp": "2026-05-30T14:45:08.524672Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -437,12 +718,12 @@
     }
   },
   {
-    "event_id": "99196bb5-7c9b-4058-a840-04b17429a14e",
+    "event_id": "343e0628-55a3-4932-b85b-73a6cd6ca223",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_afae15cba306",
+    "visitor_id": "v_466660e45cd6",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:10.061063Z",
+    "timestamp": "2026-05-30T14:45:08.684791Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -450,24 +731,36 @@
     }
   },
   {
-    "event_id": "0c86bc67-e873-4c6c-ba89-c18d3884667f",
+    "event_id": "40a0f4ae-be1a-4987-9f0f-04279389fa70",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_21ad1c3f5de6",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:10.221182Z",
+    "visitor_id": "v_3eca5f1f4a66",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:08.844910Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "de21d188-c5da-4ad2-9d95-443398525c23",
+    "event_id": "ddd42a7d-ee37-4887-bace-9dce0445fac0",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_21ad1c3f5de6",
+    "visitor_id": "v_3eca5f1f4a66",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:08.844910Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "156839b8-c844-4894-9668-c038f3ec8f34",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_3eca5f1f4a66",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:10.541420Z",
+    "timestamp": "2026-05-30T14:45:09.165148Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -475,36 +768,60 @@
     }
   },
   {
-    "event_id": "e6452249-66e3-4d77-81c1-9642cb5c032c",
+    "event_id": "3922fda8-1ebd-478d-ae80-6ad3a1a78eb4",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_778b7e22f9bc",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:10.541420Z",
+    "visitor_id": "v_12fdd878e435",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:09.165148Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "43dc951c-2eec-4513-b17c-5b6697bd2fa2",
+    "event_id": "21a171a3-fb8a-499c-9133-22ed829fc5ba",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_eee46a1ad2c8",
+    "visitor_id": "v_12fdd878e435",
     "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:10.701539Z",
+    "timestamp": "2026-05-30T14:45:09.165148Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "1170ec0e-6285-4bf6-a8ca-b308a09c4def",
+    "event_id": "37b18259-1fba-4803-87df-b6d9f8a8b99e",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_778b7e22f9bc",
+    "visitor_id": "v_9609fd94c727",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:09.325267Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "b2983be4-b672-4fcc-b2b1-3b3b7ad32d43",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_9609fd94c727",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:09.325267Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "108c928e-a403-4777-b778-c72a54925908",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_12fdd878e435",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:10.861658Z",
+    "timestamp": "2026-05-30T14:45:09.485386Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -512,12 +829,12 @@
     }
   },
   {
-    "event_id": "0b11590a-e9cc-426f-9e10-49fe1d0bbc6c",
+    "event_id": "53bb35f0-13c7-4f8a-b87e-009eaaa223f8",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_eee46a1ad2c8",
+    "visitor_id": "v_9609fd94c727",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:11.342014Z",
+    "timestamp": "2026-05-30T14:45:09.965742Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -525,24 +842,36 @@
     }
   },
   {
-    "event_id": "9ebceb69-7632-4fb2-881a-7ef2b3a18dee",
+    "event_id": "d4daf5b7-330b-457d-83bc-470da03da098",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_205ba881b7ba",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:11.342014Z",
+    "visitor_id": "v_dfa3adc3574d",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:09.965742Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "5bd4993f-dd7c-4c5f-bab8-a36399b019c0",
+    "event_id": "02142906-4ad1-498b-a66d-17320aa2b0ad",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_205ba881b7ba",
+    "visitor_id": "v_dfa3adc3574d",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:09.965742Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "c7db79ec-1ab3-436b-8cd9-871f50e33fff",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_dfa3adc3574d",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:12.783085Z",
+    "timestamp": "2026-05-30T14:45:11.406813Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -550,24 +879,36 @@
     }
   },
   {
-    "event_id": "68bf0759-1d7b-4d61-816f-20d2f6ffc01d",
+    "event_id": "689b30a0-5776-4b24-8f98-b3a11e07a1f9",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_acf181ece4eb",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:13.583679Z",
+    "visitor_id": "v_fcfd64184a46",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:12.207407Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "8f7008c5-8bc0-4a62-b591-af65ddf845a2",
+    "event_id": "18442662-ea76-4f65-8df1-c8cad8a079d3",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_acf181ece4eb",
+    "visitor_id": "v_fcfd64184a46",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:12.207407Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "8bf26a3f-e21f-47e5-80f0-bb357f53d404",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_fcfd64184a46",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:14.064036Z",
+    "timestamp": "2026-05-30T14:45:12.687764Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -575,24 +916,36 @@
     }
   },
   {
-    "event_id": "bf0711e4-4cbd-4c1a-af08-c5c33aaebad8",
+    "event_id": "a3d0f3cf-31b6-41c5-af3d-6a564b56218d",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_29c031e1ee67",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:14.864630Z",
+    "visitor_id": "v_a026f0b0d472",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:13.488358Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "cf14f987-915a-4ffb-a004-ab4eb8e7574c",
+    "event_id": "68c17e07-5016-4a0b-9b2b-524eebe21644",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_29c031e1ee67",
+    "visitor_id": "v_a026f0b0d472",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:13.488358Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "6da5f358-d58a-418d-b911-5b2139d2cb6f",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_a026f0b0d472",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:15.184868Z",
+    "timestamp": "2026-05-30T14:45:13.808596Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -600,36 +953,60 @@
     }
   },
   {
-    "event_id": "c2f8d7f3-5300-4e2d-901e-95b35bd75b17",
+    "event_id": "cbac3b62-3ab1-4c51-a451-f2bb03a2b205",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_6375a56c6774",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:15.344987Z",
+    "visitor_id": "v_2a1b45ce5f87",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:13.968715Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "82e9b2d7-57a3-4c87-b255-b4a65f698ec2",
+    "event_id": "bb42fd3a-879f-428e-a2f6-bad3dd475ff7",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_ac3d07498843",
+    "visitor_id": "v_2a1b45ce5f87",
     "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:16.465819Z",
+    "timestamp": "2026-05-30T14:45:13.968715Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "4890c9af-d162-4cd2-8f07-c6805bd52d4b",
+    "event_id": "132d01c0-0fc5-450f-a2ef-e67c2d9492f3",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_ac3d07498843",
+    "visitor_id": "v_8b148b1dcb79",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:15.089547Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "8bd5774e-a7d0-4e6e-8dff-870776aa99bc",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_8b148b1dcb79",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:15.089547Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "007eded8-7b57-4cf3-9cf9-3fdcdebdc559",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_8b148b1dcb79",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:16.786057Z",
+    "timestamp": "2026-05-30T14:45:15.409785Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -637,12 +1014,12 @@
     }
   },
   {
-    "event_id": "a8740f84-fa68-4523-b588-0d3eb3d69547",
+    "event_id": "dfb390f9-6aa6-46fa-92fe-8bb7b1d5552f",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_6375a56c6774",
+    "visitor_id": "v_2a1b45ce5f87",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:19.027722Z",
+    "timestamp": "2026-05-30T14:45:17.651450Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -650,24 +1027,36 @@
     }
   },
   {
-    "event_id": "183aa9af-59a8-4b0b-b96a-8c935546b0c1",
+    "event_id": "0180a4f9-73f4-4be1-b2fb-6272f46cc660",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_6f8102b86300",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:19.187841Z",
+    "visitor_id": "v_18eb064f9df4",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:17.811569Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "989680ed-7869-4199-b979-236e5ca7a0bf",
+    "event_id": "b4185fd2-0320-4bda-846b-8bb9aab439ac",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_6f8102b86300",
+    "visitor_id": "v_18eb064f9df4",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:17.811569Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "8a021335-712a-45c7-a501-75add8ba2d3c",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_18eb064f9df4",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:20.468792Z",
+    "timestamp": "2026-05-30T14:45:19.092520Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -675,36 +1064,60 @@
     }
   },
   {
-    "event_id": "5f6a1338-9fd2-472b-a412-f4522e7b39f0",
+    "event_id": "6b11a733-aaa4-497d-8b57-f55f9a760d3f",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_6f4d37a3c4ac",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:20.789030Z",
+    "visitor_id": "v_99796f0d9a1d",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:19.412758Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "622f2c67-2e64-4666-9424-78d912c8a8f9",
+    "event_id": "1e8a2bb4-438a-46e8-837b-ae9d3f2b5052",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_12f8a360e805",
+    "visitor_id": "v_99796f0d9a1d",
     "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:20.789030Z",
+    "timestamp": "2026-05-30T14:45:19.412758Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "250ffd52-a1a9-45d4-9805-c069be5fc12c",
+    "event_id": "c7504e6d-a615-4b6f-80cb-3bd2a6c4d45c",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_6f4d37a3c4ac",
+    "visitor_id": "v_cb3bda45b724",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:19.412758Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "63f1a6ca-4a15-42ad-aec8-c87f3113c824",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_cb3bda45b724",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:19.412758Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "54cff5bb-801c-4456-9e20-f457adb2cb43",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_99796f0d9a1d",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:21.749743Z",
+    "timestamp": "2026-05-30T14:45:20.373471Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -712,12 +1125,12 @@
     }
   },
   {
-    "event_id": "24afc548-e290-458e-9667-734d0a593720",
+    "event_id": "370e0e2b-3bb0-4e83-8a1b-1169e97b6632",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_12f8a360e805",
+    "visitor_id": "v_cb3bda45b724",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:21.749743Z",
+    "timestamp": "2026-05-30T14:45:20.373471Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -725,24 +1138,36 @@
     }
   },
   {
-    "event_id": "ed6f3fc7-174b-433e-a6c4-681d0ddd1c63",
+    "event_id": "105afbb7-b947-4ae0-b23b-fa54416bf247",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_645c743dbe5c",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:21.909862Z",
+    "visitor_id": "v_66dd377376fd",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:20.533590Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "56b85107-187a-4728-bb10-416397c6b53e",
+    "event_id": "44686d68-aa86-4b4e-9a4c-e43a123fd53e",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_645c743dbe5c",
+    "visitor_id": "v_66dd377376fd",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:20.533590Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "96cfb185-47bd-438b-a9b1-3e728ec6cef4",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_66dd377376fd",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:26.233072Z",
+    "timestamp": "2026-05-30T14:45:24.856800Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -750,36 +1175,60 @@
     }
   },
   {
-    "event_id": "14cae8d0-ccab-455d-af0b-1b9d41204687",
+    "event_id": "f80b13dc-806e-47c1-a5bb-58e5dc18b38b",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_c12e028ca108",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:26.393191Z",
+    "visitor_id": "v_5cd56ec19d2d",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:25.016919Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "df4440a8-0aad-4ecd-aa76-88948a382ffe",
+    "event_id": "f6069121-79ec-41b7-b3da-48b5b948782d",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_65217392506c",
+    "visitor_id": "v_5cd56ec19d2d",
     "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:26.873548Z",
+    "timestamp": "2026-05-30T14:45:25.016919Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "3fa14ecf-afbd-422c-8c98-82f7e3a2fafb",
+    "event_id": "de03633a-e9f8-45d5-a6c6-79a6ce0bafc0",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_65217392506c",
+    "visitor_id": "v_3a5adefc96f4",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:25.497276Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "66c7c491-57ca-4e1b-a26f-fc30f2cd641d",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_3a5adefc96f4",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:25.497276Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "67608d89-e794-4fbb-9730-bcebfae4a951",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_3a5adefc96f4",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:27.674143Z",
+    "timestamp": "2026-05-30T14:45:26.297871Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -787,12 +1236,12 @@
     }
   },
   {
-    "event_id": "236b8cef-058a-41c2-a0cf-43ad75e3df87",
+    "event_id": "c1234026-7082-4927-8030-af1255c5d67f",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_c12e028ca108",
+    "visitor_id": "v_5cd56ec19d2d",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:27.834262Z",
+    "timestamp": "2026-05-30T14:45:26.457990Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -800,24 +1249,36 @@
     }
   },
   {
-    "event_id": "46511bb5-828b-444f-9dbd-79975b7a402c",
+    "event_id": "4dc63a68-9ed9-46a3-877f-91e5967995bf",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_65217392506c",
-    "event_type": "BILLING_QUEUE_JOIN",
-    "timestamp": "2026-05-30T14:22:27.834262Z",
+    "visitor_id": "v_3a5adefc96f4",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:26.457990Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue"
     }
   },
   {
-    "event_id": "170bf862-fb95-4321-99f7-ae68b7861d9e",
+    "event_id": "6ae9dbac-635a-485c-b576-d9a1dd429722",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_65217392506c",
-    "event_type": "BILLING_QUEUE_ABANDON",
-    "timestamp": "2026-05-30T14:22:27.994380Z",
+    "visitor_id": "v_3a5adefc96f4",
+    "event_type": "BILLING_QUEUE_JOIN",
+    "timestamp": "2026-05-30T14:45:26.457990Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue"
+    }
+  },
+  {
+    "event_id": "c123fa6d-7260-46e9-9cb6-5d40830901bb",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_3a5adefc96f4",
+    "event_type": "ZONE_EXIT",
+    "timestamp": "2026-05-30T14:45:26.618108Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue",
@@ -825,36 +1286,73 @@
     }
   },
   {
-    "event_id": "14ad1933-8ab6-44b0-83c4-5134abde7773",
+    "event_id": "a38f42b2-50fc-4aff-946a-64e16e5cfaf3",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_a1e444ee5af7",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:27.994380Z",
+    "visitor_id": "v_3a5adefc96f4",
+    "event_type": "BILLING_QUEUE_ABANDON",
+    "timestamp": "2026-05-30T14:45:26.618108Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue",
+      "dwell_seconds": 0.160118
+    }
+  },
+  {
+    "event_id": "55578271-a3ff-45ad-9e90-837a9e439a31",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_b04c203cb7ac",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:26.618108Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "43f1fc96-5f15-46fe-b62d-6fcfa25947b4",
+    "event_id": "11800c32-d46e-41b3-a446-bcfdc311efc6",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_af7b4aca70f0",
-    "event_type": "BILLING_QUEUE_JOIN",
-    "timestamp": "2026-05-30T14:22:28.314618Z",
+    "visitor_id": "v_b04c203cb7ac",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:26.618108Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "03f952a6-f937-47d5-8bd6-f29ef5228c6b",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_c676a4b5d66f",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:26.938346Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue"
     }
   },
   {
-    "event_id": "2acb9255-8e10-4b3f-bd15-1be84d260270",
+    "event_id": "420dab7f-2e3a-4bec-bbe1-5d1bb520632b",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_a1e444ee5af7",
+    "visitor_id": "v_c676a4b5d66f",
+    "event_type": "BILLING_QUEUE_JOIN",
+    "timestamp": "2026-05-30T14:45:26.938346Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue"
+    }
+  },
+  {
+    "event_id": "223c37a0-6e4d-4b8f-a48a-c025fe3867ef",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_b04c203cb7ac",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:29.435451Z",
+    "timestamp": "2026-05-30T14:45:28.059179Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -862,12 +1360,12 @@
     }
   },
   {
-    "event_id": "58ee553f-e50e-4c25-b3aa-296240a75ead",
+    "event_id": "e1c5c842-d695-4138-a03e-ab928ec29374",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_af7b4aca70f0",
-    "event_type": "BILLING_QUEUE_ABANDON",
-    "timestamp": "2026-05-30T14:22:29.755688Z",
+    "visitor_id": "v_c676a4b5d66f",
+    "event_type": "ZONE_EXIT",
+    "timestamp": "2026-05-30T14:45:28.379416Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue",
@@ -875,36 +1373,73 @@
     }
   },
   {
-    "event_id": "45ecc5dc-e95b-4585-8064-a0af8310dfc1",
+    "event_id": "7b7096bc-f7ac-426e-b534-a2ad18c798e7",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_85ff60621db5",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:29.755688Z",
+    "visitor_id": "v_c676a4b5d66f",
+    "event_type": "BILLING_QUEUE_ABANDON",
+    "timestamp": "2026-05-30T14:45:28.379416Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue",
+      "dwell_seconds": 1.44107
+    }
+  },
+  {
+    "event_id": "61c32f45-52ce-4399-b371-4d0205381192",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_6624808023d1",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:28.379416Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "0cb69c99-8a7c-4ec8-ba23-eeeeeb3bfb82",
+    "event_id": "9c2b7ed8-199d-4b75-906a-b97829d102c1",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_88cfb36237b1",
+    "visitor_id": "v_6624808023d1",
     "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:29.915807Z",
+    "timestamp": "2026-05-30T14:45:28.379416Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "9c435c55-c297-4cad-80dc-dead9be22963",
+    "event_id": "c1e82573-df54-42db-b656-ee5819157763",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_88cfb36237b1",
+    "visitor_id": "v_849b114e8ea1",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:28.539535Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "db414de4-90c2-49b5-af5c-856319b6c5ba",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_849b114e8ea1",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:28.539535Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "2e2726ea-0b73-4bba-89dc-57d0c97f3a8e",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_849b114e8ea1",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:30.236045Z",
+    "timestamp": "2026-05-30T14:45:28.859773Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -912,24 +1447,36 @@
     }
   },
   {
-    "event_id": "bb900d10-656c-4e1c-9ab1-4c1ce4466c72",
+    "event_id": "28986f4b-ccb9-4c05-b1ce-bb7b258e863f",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_41373bf9e6c0",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:31.997353Z",
+    "visitor_id": "v_a004087028c8",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:30.621081Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "97308488-9844-4019-bcd4-ace2fb190b05",
+    "event_id": "41ea2dc6-2c60-4376-a804-c14e994a105f",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_41373bf9e6c0",
+    "visitor_id": "v_a004087028c8",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:30.621081Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "49d174ef-7837-4cd6-ab63-0d9f67c750a6",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_a004087028c8",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:32.157472Z",
+    "timestamp": "2026-05-30T14:45:30.781200Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -937,12 +1484,12 @@
     }
   },
   {
-    "event_id": "b68bc13e-35a5-44dc-9518-cbcb864ed1fa",
+    "event_id": "24b0673f-e9d5-40dc-bcfa-be52d49ec276",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_85ff60621db5",
+    "visitor_id": "v_6624808023d1",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:32.477710Z",
+    "timestamp": "2026-05-30T14:45:31.101438Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -950,24 +1497,36 @@
     }
   },
   {
-    "event_id": "22c2721d-ae7e-4f11-aeb9-fb9c41b5bf40",
+    "event_id": "9a471fc4-63ef-4950-941e-cb93069987e4",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_7c1ded354ef2",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:32.958066Z",
+    "visitor_id": "v_92de36beabec",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:31.581794Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "d3dab322-5976-4e70-a37e-0dd004ed859d",
+    "event_id": "5078588d-33cd-41ed-97e2-5dd361583470",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_7c1ded354ef2",
+    "visitor_id": "v_92de36beabec",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:31.581794Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "f379a9cf-1ce8-41b1-8958-df38a5573c3b",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_92de36beabec",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:34.559255Z",
+    "timestamp": "2026-05-30T14:45:33.182983Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -975,24 +1534,36 @@
     }
   },
   {
-    "event_id": "044f5c24-8706-4a0d-b3cd-b16bcdde872b",
+    "event_id": "e3e19de1-735b-42aa-80c2-2620aafa9ce0",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_647ae6c38ac1",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:38.241990Z",
+    "visitor_id": "v_00a5e0f0a5ee",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:36.865718Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "69cd4267-53a6-473a-8869-cbae3c27df27",
+    "event_id": "32899e5e-e32e-410e-aa1b-16b833e3e5b3",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_647ae6c38ac1",
+    "visitor_id": "v_00a5e0f0a5ee",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:36.865718Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "a7d4ccb7-c512-4c59-bcfa-21276eb7f0a3",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_00a5e0f0a5ee",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:43.045557Z",
+    "timestamp": "2026-05-30T14:45:41.669285Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1000,24 +1571,36 @@
     }
   },
   {
-    "event_id": "6a7c7ef3-c6ae-406e-b0cf-3b2707d6b1b1",
+    "event_id": "4cb07f09-09ea-4bd8-afcb-e8801f4bfdfb",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_7ba8681dedbc",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:43.205676Z",
+    "visitor_id": "v_e54efe513255",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:41.829404Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "037ce524-5d98-4110-87d7-2062431c4d7e",
+    "event_id": "1215941d-66b8-4ee3-8e26-18a1a2cd1c66",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_7ba8681dedbc",
+    "visitor_id": "v_e54efe513255",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:41.829404Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "9d969834-6e00-4d45-80e6-acfa152652bd",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_e54efe513255",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:43.525914Z",
+    "timestamp": "2026-05-30T14:45:42.149642Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1025,36 +1608,60 @@
     }
   },
   {
-    "event_id": "55aaafc6-36fd-4bef-9d1f-3f4f6084bd8e",
+    "event_id": "3c3b5006-4bfa-4b35-9284-6df6d89cdbb7",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_ef6946c6bf12",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:44.006271Z",
+    "visitor_id": "v_d00d359520f0",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:42.629999Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "8672ca66-e297-4936-a2c8-36280da5f86e",
+    "event_id": "2b61e450-f78b-43af-9a60-e15ade61e799",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_a708872f3881",
+    "visitor_id": "v_d00d359520f0",
     "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:44.326509Z",
+    "timestamp": "2026-05-30T14:45:42.629999Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "ada9e2f3-49aa-4d2b-962c-110a666413f3",
+    "event_id": "4c3411ed-2d39-4207-a405-4a423700e26b",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_a708872f3881",
+    "visitor_id": "v_7b7d3b95079d",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:42.950237Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "3e16a330-4c79-48f9-9723-d9282b894270",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_7b7d3b95079d",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:42.950237Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "d43003ca-e156-480c-8e1f-4b148e645036",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_7b7d3b95079d",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:44.646746Z",
+    "timestamp": "2026-05-30T14:45:43.270474Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1062,12 +1669,12 @@
     }
   },
   {
-    "event_id": "ef733bd3-2973-4e7c-a6f3-91166a8d3171",
+    "event_id": "24af4dc2-588d-40ed-8bbc-cfee064fced0",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_ef6946c6bf12",
+    "visitor_id": "v_d00d359520f0",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:44.806865Z",
+    "timestamp": "2026-05-30T14:45:43.430593Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1075,24 +1682,36 @@
     }
   },
   {
-    "event_id": "49567476-0fc9-4ef9-8af2-05184caf3f8e",
+    "event_id": "c105d6ba-4269-4a00-9c44-347e0b0cc001",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_4846be2c00ed",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:45.607460Z",
+    "visitor_id": "v_7b792937e294",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:44.231188Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "7e5f1f4f-7f24-4cb7-ac82-22961a06b252",
+    "event_id": "580e8125-d262-46d3-bb04-b802a92dd095",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_4846be2c00ed",
+    "visitor_id": "v_7b792937e294",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:44.231188Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "fcc6bedb-82d4-4e54-9015-7250ea72421a",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_7b792937e294",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:45.767579Z",
+    "timestamp": "2026-05-30T14:45:44.391307Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1100,24 +1719,36 @@
     }
   },
   {
-    "event_id": "160c85ac-8c77-4cc8-8935-fe0f338bea6c",
+    "event_id": "79877c98-6924-43b0-9422-c92c1ed1a16a",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_7c334f8f275d",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:45.927698Z",
+    "visitor_id": "v_f2f6f6791eda",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:44.551426Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "7a76f4f1-5e17-4079-8d02-d6b2fbb6fed6",
+    "event_id": "0c52fb9f-351d-428b-b78f-239c3f652fb3",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_7c334f8f275d",
+    "visitor_id": "v_f2f6f6791eda",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:44.551426Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "14706476-ae68-48aa-aca9-e84d7a39ded2",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_f2f6f6791eda",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:46.408054Z",
+    "timestamp": "2026-05-30T14:45:45.031782Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1125,24 +1756,36 @@
     }
   },
   {
-    "event_id": "a9c4532f-1356-4e89-9798-00abdc0c8657",
+    "event_id": "463409b1-77f2-464e-a84a-5de1bab8b012",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_de06a72c9b7e",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:46.568173Z",
+    "visitor_id": "v_1faf3ffd5cf8",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:45.191901Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "d07b4f67-1e4b-4455-8441-a83ae4464e2a",
+    "event_id": "55211cd0-6f9e-45f7-aa85-2f088e921500",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_de06a72c9b7e",
+    "visitor_id": "v_1faf3ffd5cf8",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:45.191901Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "783487b5-debb-4eab-ac0c-10cec8f2b87c",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_1faf3ffd5cf8",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:46.728292Z",
+    "timestamp": "2026-05-30T14:45:45.352020Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1150,24 +1793,36 @@
     }
   },
   {
-    "event_id": "099bb499-a2f5-4407-b097-10b2b087e122",
+    "event_id": "17d5fd19-57a0-4299-81d4-6ecde3df1e6d",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_93cee34654ef",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:47.368768Z",
+    "visitor_id": "v_ea957a95bc0a",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:45.992496Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "3597e5e3-e6aa-4a5f-a654-188eef5384c2",
+    "event_id": "a73e9d5d-e05e-49a2-b96a-1e9e3e95fff2",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_93cee34654ef",
+    "visitor_id": "v_ea957a95bc0a",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:45.992496Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "1c2236f3-61ca-447d-9dfa-656a1ef41ac8",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_ea957a95bc0a",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:47.528887Z",
+    "timestamp": "2026-05-30T14:45:46.152615Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1175,36 +1830,60 @@
     }
   },
   {
-    "event_id": "f05084d4-691a-4319-a98c-d04ac17a5f80",
+    "event_id": "25e71d70-fef0-45e3-a0ac-dd9cb829602b",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_660c0ee578f5",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:47.689006Z",
+    "visitor_id": "v_e311e4915ac8",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:46.312734Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "a50c4844-3659-4a2a-8776-825b2a1d24c2",
+    "event_id": "816a3029-cbff-4b58-abeb-23b5364d44dd",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_f23c1672617d",
+    "visitor_id": "v_e311e4915ac8",
     "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:22:47.849124Z",
+    "timestamp": "2026-05-30T14:45:46.312734Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "3cb3c30b-406f-4262-a2cb-ba652474fbae",
+    "event_id": "e1cfdb18-3f1d-4f0f-941b-4f7461bd345e",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_660c0ee578f5",
+    "visitor_id": "v_1b6819d5aa7f",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:46.472852Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "d36abea2-4d37-4402-a297-cb4fe993480b",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_1b6819d5aa7f",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:45:46.472852Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "4d653221-9c1f-424f-818e-8c240871aa1c",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_e311e4915ac8",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:49.450313Z",
+    "timestamp": "2026-05-30T14:45:48.074041Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1212,12 +1891,12 @@
     }
   },
   {
-    "event_id": "085d4695-1452-43aa-b011-8edfa2a56938",
+    "event_id": "5fb92976-2cc0-4480-9a3b-a33b388deda8",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_f23c1672617d",
+    "visitor_id": "v_1b6819d5aa7f",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:22:56.015189Z",
+    "timestamp": "2026-05-30T14:45:54.638917Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1225,24 +1904,36 @@
     }
   },
   {
-    "event_id": "0422d543-0947-4e54-aa09-d6a3f07ea1df",
+    "event_id": "672aca7b-f4c1-448b-b97c-94c09a93875d",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_f23c1672617d",
-    "event_type": "BILLING_QUEUE_JOIN",
-    "timestamp": "2026-05-30T14:22:56.175307Z",
+    "visitor_id": "v_1b6819d5aa7f",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:54.799035Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue"
     }
   },
   {
-    "event_id": "902a4e70-608e-4e87-bd95-f508ca6e2022",
+    "event_id": "2a856d7d-dae6-4a8d-8c43-03b38d288fbf",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_f23c1672617d",
-    "event_type": "BILLING_QUEUE_ABANDON",
-    "timestamp": "2026-05-30T14:22:56.495545Z",
+    "visitor_id": "v_1b6819d5aa7f",
+    "event_type": "BILLING_QUEUE_JOIN",
+    "timestamp": "2026-05-30T14:45:54.799035Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue"
+    }
+  },
+  {
+    "event_id": "c6c31139-59bb-44e0-a748-9db32b8ef599",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_1b6819d5aa7f",
+    "event_type": "ZONE_EXIT",
+    "timestamp": "2026-05-30T14:45:55.119273Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue",
@@ -1250,24 +1941,49 @@
     }
   },
   {
-    "event_id": "67008fab-2f69-40e7-b571-5924e3b039e7",
+    "event_id": "43a48f0d-36a1-4e1b-af1f-d1e663c20f92",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_1d274165dc26",
-    "event_type": "BILLING_QUEUE_JOIN",
-    "timestamp": "2026-05-30T14:22:56.815783Z",
+    "visitor_id": "v_1b6819d5aa7f",
+    "event_type": "BILLING_QUEUE_ABANDON",
+    "timestamp": "2026-05-30T14:45:55.119273Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue",
+      "dwell_seconds": 0.320238
+    }
+  },
+  {
+    "event_id": "99e7fb81-0f97-4dfa-80b6-26d1a128400e",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_279233a17823",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:45:55.439511Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue"
     }
   },
   {
-    "event_id": "f6bccd02-9e64-4e14-ac8c-f998969d4bbc",
+    "event_id": "aa02b447-b8b2-4fa4-811d-c3603bf986c6",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_1d274165dc26",
-    "event_type": "BILLING_QUEUE_ABANDON",
-    "timestamp": "2026-05-30T14:22:58.577091Z",
+    "visitor_id": "v_279233a17823",
+    "event_type": "BILLING_QUEUE_JOIN",
+    "timestamp": "2026-05-30T14:45:55.439511Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue"
+    }
+  },
+  {
+    "event_id": "47322f6b-f6d5-412a-ab14-66235790d975",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_279233a17823",
+    "event_type": "ZONE_EXIT",
+    "timestamp": "2026-05-30T14:45:57.200819Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue",
@@ -1275,24 +1991,49 @@
     }
   },
   {
-    "event_id": "7a701ab7-dfb5-4990-99e9-dacc985070e6",
+    "event_id": "f88c7e51-825c-4625-9bfd-182d0d7ad29e",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_45cca555e526",
-    "event_type": "BILLING_QUEUE_JOIN",
-    "timestamp": "2026-05-30T14:23:10.746128Z",
+    "visitor_id": "v_279233a17823",
+    "event_type": "BILLING_QUEUE_ABANDON",
+    "timestamp": "2026-05-30T14:45:57.200819Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue",
+      "dwell_seconds": 1.761308
+    }
+  },
+  {
+    "event_id": "9fa23a08-30be-4aa5-9a36-0f9f96249ebc",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_eed43b901548",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:46:09.369856Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue"
     }
   },
   {
-    "event_id": "d19abca1-fac7-4ad2-8dd2-aff2cc3f9a7e",
+    "event_id": "012a9939-ad87-47b7-86d4-cb65c9222b04",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_45cca555e526",
-    "event_type": "BILLING_QUEUE_ABANDON",
-    "timestamp": "2026-05-30T14:23:11.066365Z",
+    "visitor_id": "v_eed43b901548",
+    "event_type": "BILLING_QUEUE_JOIN",
+    "timestamp": "2026-05-30T14:46:09.369856Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue"
+    }
+  },
+  {
+    "event_id": "52d051a2-dff5-41bc-8227-e824f07d4248",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_eed43b901548",
+    "event_type": "ZONE_EXIT",
+    "timestamp": "2026-05-30T14:46:09.690093Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "billing_queue",
@@ -1300,24 +2041,49 @@
     }
   },
   {
-    "event_id": "3f944550-1a29-4257-af0c-4cc2fba1129a",
+    "event_id": "201febd6-4d40-484e-92c6-57220ebac043",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_1ea6e00633fc",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:23:11.546722Z",
+    "visitor_id": "v_eed43b901548",
+    "event_type": "BILLING_QUEUE_ABANDON",
+    "timestamp": "2026-05-30T14:46:09.690093Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "billing_queue",
+      "dwell_seconds": 0.320237
+    }
+  },
+  {
+    "event_id": "6ae7ad56-e9c1-483e-a34d-0527449394da",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_55fa5481c481",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:46:10.170450Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "d4e88a67-73c7-428a-ad10-67a0e22ced46",
+    "event_id": "f6e3b7e1-b145-4937-8d73-23756c1d9caf",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_1ea6e00633fc",
+    "visitor_id": "v_55fa5481c481",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:46:10.170450Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "d91fa172-64ca-4226-8e6e-9f94cd685e40",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_55fa5481c481",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:23:12.827673Z",
+    "timestamp": "2026-05-30T14:46:11.451401Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1325,24 +2091,36 @@
     }
   },
   {
-    "event_id": "836f24c2-d7d0-4354-828a-c9020779f8dc",
+    "event_id": "69fd0460-9728-4805-95db-67e79040a939",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_05ad00c5e237",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:23:13.948506Z",
+    "visitor_id": "v_9ae835601472",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:46:12.572234Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "a82a2a60-1e00-4625-85e3-761d0eb58ebb",
+    "event_id": "dd5fadd4-7513-4acc-98ff-578567638dd0",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_05ad00c5e237",
+    "visitor_id": "v_9ae835601472",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:46:12.572234Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "5997b97f-f95a-4804-b212-843b84b99d80",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_9ae835601472",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:23:14.268743Z",
+    "timestamp": "2026-05-30T14:46:12.892471Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1350,24 +2128,36 @@
     }
   },
   {
-    "event_id": "2df91bf3-b56f-4a10-b760-7c51791211f0",
+    "event_id": "5f48578d-1343-4712-abfc-b6fc938b87ff",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_e9447330d966",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:23:14.268743Z",
+    "visitor_id": "v_0a05e09fd15d",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:46:12.892471Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "6967fe88-46c2-4eb4-809e-317d2bc8a06e",
+    "event_id": "abdf8a6a-142e-4d10-a9cc-654db43c8e2a",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_e9447330d966",
+    "visitor_id": "v_0a05e09fd15d",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:46:12.892471Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "669a304f-7b81-4bfe-84fe-787d56ab1a2c",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_0a05e09fd15d",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:23:14.428862Z",
+    "timestamp": "2026-05-30T14:46:13.052590Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1375,24 +2165,36 @@
     }
   },
   {
-    "event_id": "70ee3b59-d647-4a19-8338-b8381decf6a2",
+    "event_id": "3bbce994-54b2-4c5b-aa1d-aa2cede5f88d",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_044830a7148c",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:23:14.428862Z",
+    "visitor_id": "v_c6566f6568b2",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:46:13.052590Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "80bea676-2c60-464e-9352-4ee09f8a08ea",
+    "event_id": "3cf1ebbf-7750-4171-8850-0d10ad0fab94",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_044830a7148c",
+    "visitor_id": "v_c6566f6568b2",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:46:13.052590Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "1f5e3f45-fdec-406e-895e-07197e3f0df1",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_c6566f6568b2",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:23:17.150884Z",
+    "timestamp": "2026-05-30T14:46:15.774612Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1400,24 +2202,36 @@
     }
   },
   {
-    "event_id": "089b2319-a087-4b83-bd37-e65166790e4e",
+    "event_id": "4e6d8717-c893-4957-bc97-3b168265fd00",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_4f9540a9c6c2",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:23:33.643131Z",
+    "visitor_id": "v_f179bf3d4df6",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:46:32.266859Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "b969232f-cc50-4b9f-83f0-f534f2706781",
+    "event_id": "7aa3e9d7-e57a-4d2f-b544-ea0cd1f89430",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_4f9540a9c6c2",
+    "visitor_id": "v_f179bf3d4df6",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:46:32.266859Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "f17eca78-60d6-4823-84a5-e0a559998283",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_f179bf3d4df6",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:23:38.286579Z",
+    "timestamp": "2026-05-30T14:46:36.910307Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1425,24 +2239,36 @@
     }
   },
   {
-    "event_id": "5eeec238-460e-4659-8a8a-f4401e5ae2d5",
+    "event_id": "7eb2e97e-fc1c-4af0-9084-2465b05fee0e",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_cb613f5a6bd3",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:23:38.446698Z",
+    "visitor_id": "v_75b428e9a3b9",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:46:37.070426Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "34cc43d5-61f5-4779-9415-8ec1f21143b8",
+    "event_id": "ed2acfe2-c5b1-4230-a817-62c3f3f58535",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_cb613f5a6bd3",
+    "visitor_id": "v_75b428e9a3b9",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:46:37.070426Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "365ea330-7894-40b7-950f-e1ba7ebc2bea",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_75b428e9a3b9",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:23:39.407411Z",
+    "timestamp": "2026-05-30T14:46:38.031139Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1450,24 +2276,36 @@
     }
   },
   {
-    "event_id": "65a4741d-8615-45f0-9ed7-602457051b65",
+    "event_id": "8978143b-bf8e-4430-8a8c-e124c94cd0ee",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_bd77b191bf49",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:23:39.727649Z",
+    "visitor_id": "v_6bc8130bda1a",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:46:38.351377Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "fa00d298-61b1-4b12-b16f-f9992f212659",
+    "event_id": "c4a2773e-30f9-4df1-b262-f37124222ab9",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_bd77b191bf49",
+    "visitor_id": "v_6bc8130bda1a",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:46:38.351377Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "d0fbf7c2-030a-4cc5-a2cd-fa1504eabb30",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_6bc8130bda1a",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:23:39.887768Z",
+    "timestamp": "2026-05-30T14:46:38.511496Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1475,24 +2313,36 @@
     }
   },
   {
-    "event_id": "1ca29109-886c-409e-b498-5c4ccd8c4f81",
+    "event_id": "7cf5ab78-143d-4727-b109-782b0c07cca7",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_057f40f24bfd",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:23:40.208006Z",
+    "visitor_id": "v_08e3b20d5f0a",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:46:38.831734Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "3d36e4d9-b2a5-4093-836f-1f44421151ba",
+    "event_id": "4a172fe5-725b-4b27-9748-268946370dc7",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_057f40f24bfd",
+    "visitor_id": "v_08e3b20d5f0a",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:46:38.831734Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "867ff37c-9380-4805-aaf5-41e8d1db8caf",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_08e3b20d5f0a",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:23:42.129433Z",
+    "timestamp": "2026-05-30T14:46:40.753161Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1500,24 +2350,36 @@
     }
   },
   {
-    "event_id": "86a6589e-361a-45db-b2b2-e6bc93b3e8f3",
+    "event_id": "02d91665-43c2-4e75-b7de-878a66759754",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_0e2240604272",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:23:42.769908Z",
+    "visitor_id": "v_33b242c6ec87",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:46:41.393636Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "1d39f6c2-a92c-4254-a42c-f8c6055dab62",
+    "event_id": "c6674494-ebca-4f10-acf1-8c28308e1a7b",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_0e2240604272",
+    "visitor_id": "v_33b242c6ec87",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:46:41.393636Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "4838d589-5c74-4ee7-8ee7-3775d62e01fa",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_33b242c6ec87",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:23:43.250265Z",
+    "timestamp": "2026-05-30T14:46:41.873993Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1525,24 +2387,36 @@
     }
   },
   {
-    "event_id": "7684085d-ebd8-4564-83c5-ea1a86d36c10",
+    "event_id": "783bf232-3991-4eea-b24d-31f531a8f7c9",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_e3151e8d4de8",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:23:43.410384Z",
+    "visitor_id": "v_1d8945251d66",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:46:42.034112Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "bb232fb2-b804-4dfe-8863-929133815043",
+    "event_id": "ae1aa0c4-6e4a-4a7a-9eb8-7ce05685e5ea",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_e3151e8d4de8",
+    "visitor_id": "v_1d8945251d66",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:46:42.034112Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "006f4768-7be8-4401-9a52-6a7ed18e299e",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_1d8945251d66",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:23:45.812167Z",
+    "timestamp": "2026-05-30T14:46:44.435895Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",
@@ -1550,24 +2424,36 @@
     }
   },
   {
-    "event_id": "9b104960-4bfe-414b-b845-0280055114d3",
+    "event_id": "273627e3-f1fb-45d8-bf12-7f70b57841c3",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_31b7d2c1e88a",
-    "event_type": "PURCHASE_PROXY",
-    "timestamp": "2026-05-30T14:23:47.253238Z",
+    "visitor_id": "v_63523439abfc",
+    "event_type": "ZONE_ENTER",
+    "timestamp": "2026-05-30T14:46:45.876966Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter"
     }
   },
   {
-    "event_id": "0ac221d0-9b2b-4503-9f0e-62fc034f8434",
+    "event_id": "a8a97754-7b95-4d34-be85-c955e96e6ddf",
     "store_id": "test_store",
     "camera_id": "CAM5",
-    "visitor_id": "v_31b7d2c1e88a",
+    "visitor_id": "v_63523439abfc",
+    "event_type": "PURCHASE_PROXY",
+    "timestamp": "2026-05-30T14:46:45.876966Z",
+    "confidence": 0.9,
+    "metadata": {
+      "zone_id": "checkout_counter"
+    }
+  },
+  {
+    "event_id": "0638c297-e3ed-4ffe-bd20-99c413057248",
+    "store_id": "test_store",
+    "camera_id": "CAM5",
+    "visitor_id": "v_63523439abfc",
     "event_type": "ZONE_EXIT",
-    "timestamp": "2026-05-30T14:23:47.733594Z",
+    "timestamp": "2026-05-30T14:46:46.357322Z",
     "confidence": 0.9,
     "metadata": {
       "zone_id": "checkout_counter",

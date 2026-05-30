@@ -55,27 +55,31 @@ class DetectionPipeline:
         Maps generic ZONE_ENTER / ZONE_EXIT events to camera-specific 
         challenge events.
         """
+        import uuid
         mapped_events = []
         for e in events:
+            # Always keep original event
+            mapped_events.append(e)
+            
             # Basic mapping
             if self.camera_id == "CAM3":
                 if e.event_type == EventType.ZONE_ENTER:
-                    e.event_type = EventType.ENTRY
+                    mapped_events.append(e.model_copy(update={"event_type": EventType.ENTRY, "event_id": str(uuid.uuid4())}))
                 elif e.event_type == EventType.ZONE_EXIT:
-                    e.event_type = EventType.EXIT
+                    mapped_events.append(e.model_copy(update={"event_type": EventType.EXIT, "event_id": str(uuid.uuid4())}))
                     
             elif self.camera_id == "CAM5":
                 if e.metadata.get("zone_id") == "billing_queue":
                     if e.event_type == EventType.ZONE_ENTER:
-                        e.event_type = EventType.BILLING_QUEUE_JOIN
+                        mapped_events.append(e.model_copy(update={"event_type": EventType.BILLING_QUEUE_JOIN, "event_id": str(uuid.uuid4())}))
                     elif e.event_type == EventType.ZONE_EXIT:
                         # We don't know if they abandoned or purchased until we check checkout_counter
                         # For now, just map exit from queue. We'll simplify this logic.
-                        e.event_type = EventType.BILLING_QUEUE_ABANDON
+                        mapped_events.append(e.model_copy(update={"event_type": EventType.BILLING_QUEUE_ABANDON, "event_id": str(uuid.uuid4())}))
                         
                 elif e.metadata.get("zone_id") == "checkout_counter":
                     if e.event_type == EventType.ZONE_ENTER:
-                        e.event_type = EventType.PURCHASE_PROXY
+                        mapped_events.append(e.model_copy(update={"event_type": EventType.PURCHASE_PROXY, "event_id": str(uuid.uuid4())}))
             
             # Map staff detected to both STAFF_DETECTED and STAFF_EXCLUSION
             if e.event_type == EventType.STAFF_DETECTED:
@@ -89,8 +93,6 @@ class DetectionPipeline:
                     metadata=e.metadata
                 )
                 mapped_events.append(exclude_event)
-                
-            mapped_events.append(e)
             
         return mapped_events
 
