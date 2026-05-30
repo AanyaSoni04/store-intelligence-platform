@@ -48,6 +48,7 @@ class DetectionPipeline:
         self.visitor_manager = VisitorManager(store_id)
         
         self.all_events: List[StoreEvent] = []
+        self._prev_track_ids: set[int] = set()
 
     def _map_events_for_camera(self, events: List[StoreEvent]) -> List[StoreEvent]:
         """
@@ -76,8 +77,19 @@ class DetectionPipeline:
                     if e.event_type == EventType.ZONE_ENTER:
                         e.event_type = EventType.PURCHASE_PROXY
             
-            # Note: For CAM4 STAFF_DETECTED / STAFF_EXCLUSION, we handle that in visitor_manager scoring,
-            # but we can explicitly emit it here if a person is flagged.
+            # Map staff detected to both STAFF_DETECTED and STAFF_EXCLUSION
+            if e.event_type == EventType.STAFF_DETECTED:
+                exclude_event = StoreEvent(
+                    store_id=e.store_id,
+                    camera_id=e.camera_id,
+                    visitor_id=e.visitor_id,
+                    event_type=EventType.STAFF_EXCLUSION,
+                    timestamp=e.timestamp,
+                    confidence=e.confidence,
+                    metadata=e.metadata
+                )
+                mapped_events.append(exclude_event)
+                
             mapped_events.append(e)
             
         return mapped_events
@@ -125,6 +137,26 @@ class DetectionPipeline:
             
             # 2. Track
             tracked_persons = self.tracker.update(detections)
+            current_track_ids = {p.track_id for p in tracked_persons}
+            
+            # Handle lost tracks to generate ZONE_EXIT
+            lost_tracks = self._prev_track_ids - current_track_ids
+            for track_id in lost_tracks:
+                events = self.visitor_manager.process_zone_hits(
+                    track_id=track_id,
+                    camera_id=self.camera_id,
+                    current_zones=[],
+                    timestamp=current_timestamp
+                )
+                self.visitor_manager.remove_track(track_id)
+                mapped_events = self._map_events_for_camera(events)
+                if mapped_events:
+                    for ev in mapped_events:
+                        if ev.event_type in (EventType.ZONE_EXIT, EventType.EXIT):
+                            logger.info(f"Generated {ev.event_type.value} event for visitor {ev.visitor_id}")
+                    self.all_events.extend(mapped_events)
+            
+            self._prev_track_ids = current_track_ids
             
             # 3. Zone & Event Mapping
             for person in tracked_persons:
@@ -144,10 +176,30 @@ class DetectionPipeline:
                 
                 if mapped_events:
                     for ev in mapped_events:
-                        print(f"EVENT GENERATED: {ev.event_type} - Visitor {ev.visitor_id} at {ev.timestamp}")
+                        if ev.event_type in (EventType.ZONE_EXIT, EventType.EXIT):
+                            logger.info(f"Generated {ev.event_type.value} event for visitor {ev.visitor_id}")
                     self.all_events.extend(mapped_events)
 
         cap.release()
+        
+        # Flush remaining active tracks at end of video
+        flush_timestamp = current_timestamp if 'current_timestamp' in locals() else base_time
+        for track_id in self._prev_track_ids:
+            events = self.visitor_manager.process_zone_hits(
+                track_id=track_id,
+                camera_id=self.camera_id,
+                current_zones=[],
+                timestamp=flush_timestamp
+            )
+            self.visitor_manager.remove_track(track_id)
+            mapped_events = self._map_events_for_camera(events)
+            if mapped_events:
+                for ev in mapped_events:
+                    if ev.event_type in (EventType.ZONE_EXIT, EventType.EXIT):
+                        logger.info(f"Generated {ev.event_type.value} event for visitor {ev.visitor_id}")
+                self.all_events.extend(mapped_events)
+                
+        self._prev_track_ids.clear()
         
         end_time = time.time()
         elapsed = end_time - start_time
@@ -155,12 +207,35 @@ class DetectionPipeline:
         
         logger.info(f"Pipeline complete. Processed {processed_count} frames in {elapsed:.2f}s ({achieved_fps:.2f} FPS). Generated {len(self.all_events)} events.")
         
-        # Save to JSON
+        # Save to JSON for debugging
         output_path = Path("data/generated_events.json")
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
+        events_json = [e.model_dump(mode="json") for e in self.all_events]
         with open(output_path, "w") as f:
-            json.dump([e.model_dump(mode="json") for e in self.all_events], f, indent=2)
+            json.dump(events_json, f, indent=2)
+            
+        # Ingest to FastAPI in batches of 500
+        import requests
+        batch_size = 500
+        total_accepted = 0
+        
+        try:
+            for i in range(0, len(events_json), batch_size):
+                batch = events_json[i:i + batch_size]
+                resp = requests.post(
+                    "http://localhost:8000/events/ingest", 
+                    json={"events": batch},
+                    timeout=10
+                )
+                if resp.status_code == 202:
+                    total_accepted += resp.json().get('accepted', 0)
+                else:
+                    logger.error(f"Ingestion failed for batch {i//batch_size}: {resp.text}")
+                    
+            logger.info(f"Ingested {total_accepted} events to database")
+        except Exception as e:
+            logger.error(f"Could not connect to ingestion API: {e}")
             
         logger.info(f"Events saved to {output_path}")
         

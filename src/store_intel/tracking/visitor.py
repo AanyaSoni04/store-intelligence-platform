@@ -32,13 +32,15 @@ class VisitorState:
     staff_score: int = 0
     is_staff: bool = False
     
-    def add_staff_score(self, points: int):
+    def add_staff_score(self, points: int) -> bool:
         if self.is_staff:
-            return
+            return False
         self.staff_score += points
         if self.staff_score >= STAFF_SCORE_THRESHOLD:
             self.is_staff = True
             logger.info(f"Visitor {self.visitor_id} flagged as staff (Score: {self.staff_score})")
+            return True
+        return False
 
 
 class VisitorManager:
@@ -84,17 +86,33 @@ class VisitorManager:
             # Staff Scoring Heuristic: Entering a restricted zone
             if zone_id in self.staff_zones:
                 # If this is the very first zone they entered (originating from staff zone)
-                if not state.visited_zones:
-                    state.add_staff_score(50)
-                else:
-                    state.add_staff_score(30)
+                points = 50 if not state.visited_zones else 30
+                if state.add_staff_score(points):
+                    events.append(StoreEvent(
+                        store_id=self.store_id,
+                        camera_id=camera_id,
+                        visitor_id=state.visitor_id,
+                        event_type=EventType.STAFF_DETECTED,
+                        timestamp=timestamp,
+                        confidence=1.0,
+                        metadata={"score": state.staff_score}
+                    ))
                     
             # Staff Scoring Heuristic: Traverse many zones
             if zone_id not in state.visited_zones:
                 state.visited_zones.add(zone_id)
                 # If they visit 5+ zones rapidly, they might be restocking
                 if len(state.visited_zones) >= 5:
-                    state.add_staff_score(5)
+                    if state.add_staff_score(5):
+                        events.append(StoreEvent(
+                            store_id=self.store_id,
+                            camera_id=camera_id,
+                            visitor_id=state.visitor_id,
+                            event_type=EventType.STAFF_DETECTED,
+                            timestamp=timestamp,
+                            confidence=1.0,
+                            metadata={"score": state.staff_score}
+                        ))
 
             # Generate EVENT
             events.append(StoreEvent(
@@ -134,6 +152,15 @@ class VisitorManager:
         # For simplicity, we just add points based on current time
         # This is a bit naive if called every frame, so we'll just check if they cross a block boundary
         if total_time_seconds > 0 and int(total_time_seconds) % 7200 == 0:
-            state.add_staff_score(10)
+            if state.add_staff_score(10):
+                events.append(StoreEvent(
+                    store_id=self.store_id,
+                    camera_id=camera_id,
+                    visitor_id=state.visitor_id,
+                    event_type=EventType.STAFF_DETECTED,
+                    timestamp=timestamp,
+                    confidence=1.0,
+                    metadata={"score": state.staff_score}
+                ))
 
         return events
