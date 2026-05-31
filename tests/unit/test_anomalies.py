@@ -10,6 +10,6 @@ class TestAnomalyDetection:
 
     def test_empty_store_stale_feed(self, db_session, sample_store):
         # Empty store should not alert stale feed unless it had previous events
-        response = detect_anomalies(db_session, sample_store.store_id)
+        response = detect_anomalies(db_session, sample_store.store_id, "1h")
         assert len(response.anomalies) == 0
 

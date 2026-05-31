@@ -1,0 +1,9 @@
+{
+  "zones": [
+    {
+      "zone_id": "browsing_a",
+      "zone_type": "DISPLAY",
+      "polygon": [[100, 350], [1800, 350], [1800, 1080], [100, 1080]]
+    }
+  ]
+}

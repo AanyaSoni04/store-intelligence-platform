@@ -49,6 +49,38 @@ class DetectionPipeline:
         
         self.all_events: List[StoreEvent] = []
         self._prev_track_ids: set[int] = set()
+        
+        self._last_telemetry_time = 0.0
+        self._last_telemetry_state = None
+
+    def _emit_telemetry(self, current_track_ids: set[int]):
+        """Emit real-time telemetry if 1 second has passed and state has changed."""
+        now = time.time()
+        if now - self._last_telemetry_time < 1.0:
+            return
+
+        # Calculate zone occupancy
+        zone_occupancy = {}
+        for state in self.visitor_manager._states.values():
+            for zone_id in state.active_zones.keys():
+                zone_occupancy[zone_id] = zone_occupancy.get(zone_id, 0) + 1
+
+        telemetry_payload = {
+            "camera_id": self.camera_id,
+            "active_visitors": len(self.visitor_manager._states),
+            "active_tracks": len(current_track_ids),
+            "zone_occupancy": zone_occupancy,
+            "timestamp": datetime.now(timezone.utc).isoformat()
+        }
+
+        if telemetry_payload != self._last_telemetry_state:
+            try:
+                import requests
+                requests.post("http://localhost:8000/telemetry", json=telemetry_payload, timeout=2)
+                self._last_telemetry_state = telemetry_payload
+                self._last_telemetry_time = now
+            except Exception as e:
+                logger.debug(f"Failed to emit telemetry: {e}")
 
     def _map_events_for_camera(self, events: List[StoreEvent]) -> List[StoreEvent]:
         """
@@ -63,14 +95,14 @@ class DetectionPipeline:
             
             # Basic mapping
             if self.camera_id == "CAM3":
-                if e.event_type == EventType.ZONE_ENTER:
+                if e.event_type in (EventType.ZONE_ENTER, "ZONE_ENTER"):
                     mapped_events.append(e.model_copy(update={"event_type": EventType.ENTRY, "event_id": str(uuid.uuid4())}))
-                elif e.event_type == EventType.ZONE_EXIT:
+                elif e.event_type in (EventType.ZONE_EXIT, "ZONE_EXIT"):
                     mapped_events.append(e.model_copy(update={"event_type": EventType.EXIT, "event_id": str(uuid.uuid4())}))
                     
             elif self.camera_id == "CAM5":
                 if e.metadata.get("zone_id") == "billing_queue":
-                    if e.event_type == EventType.ZONE_ENTER:
+                    if e.event_type in (EventType.ZONE_ENTER, "ZONE_ENTER"):
                         mapped_events.append(e.model_copy(update={"event_type": EventType.BILLING_QUEUE_JOIN, "event_id": str(uuid.uuid4())}))
                     elif e.event_type == EventType.ZONE_EXIT:
                         # We don't know if they abandoned or purchased until we check checkout_counter
@@ -150,7 +182,7 @@ class DetectionPipeline:
                     current_zones=[],
                     timestamp=current_timestamp
                 )
-                self.visitor_manager.remove_track(track_id)
+                self.visitor_manager.remove_track(track_id, current_timestamp)
                 mapped_events = self._map_events_for_camera(events)
                 if mapped_events:
                     for ev in mapped_events:
@@ -161,7 +193,12 @@ class DetectionPipeline:
             self._prev_track_ids = current_track_ids
             
             # 3. Zone & Event Mapping
+            frame_mapped_events = []
+            frame_centroids = {}
+            
             for person in tracked_persons:
+                frame_centroids[person.track_id] = person.centroid
+                
                 # Find zones for this person's centroid
                 active_zones = self.zone_manager.check_zones(person.centroid)
                 
@@ -178,9 +215,22 @@ class DetectionPipeline:
                 
                 if mapped_events:
                     for ev in mapped_events:
+                        ev._temp_track_id = person.track_id
+                        frame_mapped_events.append(ev)
                         if ev.event_type in (EventType.ZONE_EXIT, EventType.EXIT):
                             logger.info(f"Generated {ev.event_type.value} event for visitor {ev.visitor_id}")
-                    self.all_events.extend(mapped_events)
+            
+            # Spatial Group Clustering for ENTRY events
+            self._cluster_entry_events(frame_mapped_events, frame_centroids)
+
+            # Cleanup temp attribute and add to global list
+            for ev in frame_mapped_events:
+                if hasattr(ev, "_temp_track_id"):
+                    delattr(ev, "_temp_track_id")
+                self.all_events.append(ev)
+
+            # Emit telemetry
+            self._emit_telemetry(current_track_ids)
 
         cap.release()
         
@@ -193,7 +243,7 @@ class DetectionPipeline:
                 current_zones=[],
                 timestamp=flush_timestamp
             )
-            self.visitor_manager.remove_track(track_id)
+            self.visitor_manager.remove_track(track_id, flush_timestamp)
             mapped_events = self._map_events_for_camera(events)
             if mapped_events:
                 for ev in mapped_events:
@@ -242,3 +292,22 @@ class DetectionPipeline:
         logger.info(f"Events saved to {output_path}")
         
         return len(self.all_events)
+
+    def _cluster_entry_events(self, mapped_events: List[StoreEvent], centroids: dict):
+        """Cluster entry events based on spatial proximity."""
+        entries = [ev for ev in mapped_events if getattr(ev, 'event_type', None) in (EventType.ENTRY, "ENTRY")]
+        for ev in entries:
+            group_size = 1
+            if not hasattr(ev, '_temp_track_id') or ev._temp_track_id not in centroids:
+                continue
+            c1 = centroids[ev._temp_track_id]
+            for other_ev in entries:
+                if ev._temp_track_id != getattr(other_ev, '_temp_track_id', None):
+                    c2 = centroids.get(getattr(other_ev, '_temp_track_id', None))
+                    if c2:
+                        dist = ((c1[0] - c2[0])**2 + (c1[1] - c2[1])**2)**0.5
+                        if dist < 250:
+                            group_size += 1
+            if ev.metadata is None:
+                ev.metadata = {}
+            ev.metadata["group_size"] = group_size

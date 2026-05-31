@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 
 from store_intel.db.engine import get_db
 from store_intel.events.schemas import FunnelResponse
+from store_intel.analytics.funnel import compute_funnel
 
 router = APIRouter(tags=["Analytics"])
 
@@ -19,17 +20,5 @@ def get_funnel(
 ) -> FunnelResponse:
     """
     Return visitor funnel stages and drop-off rates.
-
-    Funnel stages:
-        entered → browsed_zone → joined_queue → completed_billing → exited
-
-    TODO: Implement funnel computation in analytics/funnel.py
-    TODO: Compute drop-off rates between consecutive stages
     """
-    # TODO: Call analytics.funnel.compute_funnel(db, store_id, window)
-    return FunnelResponse(
-        store_id=store_id,
-        window=window,
-        stages=[],
-        drop_off_rates={},
-    )
+    return compute_funnel(db, store_id, window)

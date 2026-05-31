@@ -27,6 +27,7 @@ class VisitorState:
     visitor_id: str
     track_id: int
     first_seen: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    last_seen: datetime | None = None
     active_zones: dict[str, datetime] = field(default_factory=dict)
     visited_zones: set[str] = field(default_factory=set)
     staff_score: int = 0
@@ -51,30 +52,61 @@ class VisitorManager:
     def __init__(self, store_id: str):
         self.store_id = store_id
         self._states: dict[int, VisitorState] = {}
+        self.exited_visitors: dict[str, VisitorState] = {}
+        self.reentry_window = 300  # seconds
         self.staff_zones = {"stockroom", "behind_counter"}
 
-    def get_or_create(self, track_id: int) -> VisitorState:
+    def get_or_create(self, track_id: int, timestamp: datetime) -> tuple[VisitorState, bool, str | None]:
+        reentered_from = None
+        is_new = False
         if track_id not in self._states:
+            # Check cache for recent exits
+            for vid, old_state in list(self.exited_visitors.items()):
+                if old_state.last_seen:
+                    gap = (timestamp - old_state.last_seen).total_seconds()
+                    if gap <= self.reentry_window:
+                        old_state.track_id = track_id
+                        self._states[track_id] = old_state
+                        self.exited_visitors.pop(vid)
+                        reentered_from = vid
+                        return old_state, True, reentered_from
+
             visitor_id = f"v_{uuid4().hex[:12]}"
             self._states[track_id] = VisitorState(visitor_id=visitor_id, track_id=track_id)
+            is_new = True
             logger.debug(
                 "New visitor assigned",
                 extra={"track_id": track_id, "visitor_id": visitor_id},
             )
-        return self._states[track_id]
+        return self._states[track_id], is_new, reentered_from
 
-    def remove_track(self, track_id: int) -> None:
+    def remove_track(self, track_id: int, timestamp: datetime) -> None:
         """Remove a track mapping when the track is lost."""
-        self._states.pop(track_id, None)
+        state = self._states.pop(track_id, None)
+        if state:
+            state.last_seen = timestamp
+            self.exited_visitors[state.visitor_id] = state
 
     def process_zone_hits(self, track_id: int, camera_id: str, current_zones: list[str], timestamp: datetime) -> list[StoreEvent]:
         """
         Compare current zone hits against active zones to generate Enter/Exit events.
         Also updates the deterministic staff scoring heuristic.
         """
-        state = self.get_or_create(track_id)
+        state, is_new, reentered_from = self.get_or_create(track_id, timestamp)
         events = []
         
+        if is_new and reentered_from:
+            gap_seconds = (timestamp - state.last_seen).total_seconds() if state.last_seen else 0
+            events.append(StoreEvent(
+                store_id=self.store_id,
+                camera_id=camera_id,
+                visitor_id=state.visitor_id,
+                event_type=EventType.REENTRY,
+                timestamp=timestamp,
+                confidence=0.9,
+                metadata={"original_visitor_id": reentered_from, "gap_seconds": gap_seconds}
+            ))
+
         current_zones_set = set(current_zones)
         active_zones_set = set(state.active_zones.keys())
         

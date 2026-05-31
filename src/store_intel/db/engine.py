@@ -23,13 +23,12 @@ engine = create_engine(
     echo=settings.debug,
 )
 
-# Enable WAL mode and foreign keys for SQLite
+# Enable foreign keys for SQLite (Journal mode PRAGMA removed due to WSL volume mount I/O errors)
 if "sqlite" in settings.database_url:
 
     @event.listens_for(engine, "connect")
     def _set_sqlite_pragma(dbapi_connection, connection_record):
         cursor = dbapi_connection.cursor()
-        cursor.execute("PRAGMA journal_mode=WAL;")
         cursor.execute("PRAGMA foreign_keys=ON;")
         cursor.close()
 

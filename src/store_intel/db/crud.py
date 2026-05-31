@@ -7,12 +7,12 @@ route handlers and analytics modules.
 
 import json
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from sqlalchemy.orm import Session
 
 from store_intel.db.models import Event, Store, Visitor
-from store_intel.events.schemas import StoreEvent
+from store_intel.events.schemas import StoreEvent, EventType
 
 logger = logging.getLogger("store_intel")
 
@@ -66,7 +66,43 @@ def insert_event(db: Session, event: StoreEvent) -> Event:
     Automatically creates visitor record if it doesn't exist.
     """
     # Ensure visitor exists
-    get_or_create_visitor(db, event.visitor_id, event.store_id)
+    visitor = get_or_create_visitor(db, event.visitor_id, event.store_id)
+    
+    # 1. Forward existing merges
+    while visitor.merged_into:
+        event.visitor_id = visitor.merged_into
+        visitor = get_or_create_visitor(db, event.visitor_id, event.store_id)
+
+    # 2. Cross-camera session deduplication
+    if event.event_type == EventType.ENTRY:
+        # Check for recent exits globally across the store
+        sixty_seconds_ago = event.timestamp - timedelta(seconds=60)
+        recent_exit = db.query(Event).filter(
+            Event.store_id == event.store_id,
+            Event.event_type.in_([EventType.EXIT.value, EventType.ZONE_EXIT.value]),
+            Event.timestamp >= sixty_seconds_ago,
+            Event.timestamp <= event.timestamp
+        ).order_by(Event.timestamp.desc()).first()
+        
+        if recent_exit and recent_exit.visitor_id != event.visitor_id:
+            # We found a disconnected session. Merge incoming into previous.
+            visitor.merged_into = recent_exit.visitor_id
+            db.add(visitor)
+            
+            # Rewrite the event
+            event.visitor_id = recent_exit.visitor_id
+            event.event_type = EventType.REENTRY
+            if event.metadata is None:
+                event.metadata = {}
+            event.metadata["cross_camera_merge"] = True
+            
+            # Update local reference
+            visitor = get_or_create_visitor(db, event.visitor_id, event.store_id)
+    
+    # Update is_staff flag if staff events are detected
+    if event.event_type in (EventType.STAFF_DETECTED, EventType.STAFF_EXCLUSION):
+        visitor.is_staff = True
+        db.add(visitor)
 
     db_event = Event(
         event_id=event.event_id,

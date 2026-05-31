@@ -32,9 +32,9 @@ class TestMetrics:
 
     def test_compute_funnel_empty(self, db_session, sample_store):
         funnel = compute_funnel(db_session, sample_store.store_id, "1h")
-        assert len(funnel.stages) == 4
+        assert len(funnel.stages) == 5
         assert all(s.count == 0 for s in funnel.stages)
-        assert len(funnel.drop_off_rates) == 3
+        assert len(funnel.drop_off_rates) == 4
         assert all(v == 0.0 for v in funnel.drop_off_rates.values())
 
     def test_compute_heatmap_empty(self, db_session, sample_store):

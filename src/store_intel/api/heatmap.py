@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 
 from store_intel.db.engine import get_db
 from store_intel.events.schemas import HeatmapResponse
+from store_intel.analytics.heatmap import compute_heatmap
 
 router = APIRouter(tags=["Analytics"])
 
@@ -19,12 +20,5 @@ def get_heatmap(
 ) -> HeatmapResponse:
     """
     Return zone-level visit frequency and average dwell time.
-
-    TODO: Implement heatmap computation in analytics/heatmap.py
-    TODO: Query ZONE_ENTER/ZONE_EXIT event pairs to compute per-zone metrics
     """
-    # TODO: Call analytics.heatmap.compute_heatmap(db, store_id, window)
-    return HeatmapResponse(
-        store_id=store_id,
-        zones=[],
-    )
+    return compute_heatmap(db, store_id, window)

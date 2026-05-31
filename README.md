@@ -82,10 +82,30 @@ CCTV Video → Frame Decoder → YOLOv8 Detector → ByteTrack Tracker
 └── CHOICES.md             # Technology rationale
 ```
 
+## Detection Pipeline Usage
+
+The pipeline processes video clips (using **YOLOv8** for detection and **ByteTrack** for tracking), maps spatial movements against configured zones to generate **events**, and performs **SQLite ingestion** via the backend API. These events then automatically populate the real-time **Metrics dashboard**.
+
+To run the pipeline against a local video clip:
+
+```bash
+# Make sure the API server is running first!
+python scripts/run_pipeline.py \
+    --video dashboard/assets/videos/cam1.mp4 \
+    --camera CAM1 \
+    --store test_store \
+    --zone-config configs/zones/cam_001.json
+```
+
+**Where does the output go?**
+1. **Local File:** All events are saved locally for debugging to `data/generated_events.json`.
+2. **API Ingestion:** The script automatically pushes the events in batches to `POST /events/ingest`.
+3. **Database:** The API persists these events into the SQLite `events` table.
+4. **Dashboard:** The metrics dashboard queries the database to compute live KPIs (funnels, heatmaps, queue times).
+
 <!-- TODO: Add sections for:
     - Configuration guide
     - Zone setup guide
-    - Detection pipeline usage
     - Sample API requests/responses
     - Contributing guidelines
 -->

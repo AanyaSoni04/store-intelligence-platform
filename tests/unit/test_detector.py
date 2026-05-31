@@ -19,14 +19,30 @@ class TestPersonDetector:
         # Mock YOLO results
         mock_result = MagicMock()
         mock_box1 = MagicMock()
-        mock_box1.xyxy = [np.array([10.0, 20.0, 30.0, 40.0])]
-        mock_box1.conf = [np.array(0.9)]
-        mock_box1.cls = [np.array(0)]  # Person
+        mock_tensor1_xyxy = MagicMock()
+        mock_tensor1_xyxy.cpu.return_value.numpy.return_value = np.array([10.0, 20.0, 30.0, 40.0])
+        mock_box1.xyxy = [mock_tensor1_xyxy]
+        
+        mock_tensor1_conf = MagicMock()
+        mock_tensor1_conf.cpu.return_value.numpy.return_value = np.array(0.9)
+        mock_box1.conf = [mock_tensor1_conf]
+        
+        mock_tensor1_cls = MagicMock()
+        mock_tensor1_cls.cpu.return_value.numpy.return_value = np.array(0)
+        mock_box1.cls = [mock_tensor1_cls]  # Person
         
         mock_box2 = MagicMock()
-        mock_box2.xyxy = [np.array([50.0, 60.0, 70.0, 80.0])]
-        mock_box2.conf = [np.array(0.8)]
-        mock_box2.cls = [np.array(2)]  # Car (should be filtered out by class=0 in predict)
+        mock_tensor2_xyxy = MagicMock()
+        mock_tensor2_xyxy.cpu.return_value.numpy.return_value = np.array([50.0, 60.0, 70.0, 80.0])
+        mock_box2.xyxy = [mock_tensor2_xyxy]
+        
+        mock_tensor2_conf = MagicMock()
+        mock_tensor2_conf.cpu.return_value.numpy.return_value = np.array(0.8)
+        mock_box2.conf = [mock_tensor2_conf]
+        
+        mock_tensor2_cls = MagicMock()
+        mock_tensor2_cls.cpu.return_value.numpy.return_value = np.array(2)
+        mock_box2.cls = [mock_tensor2_cls]  # Car
         
         # We assume the model predict call handles filtering, but we test the parsing
         mock_result.boxes = [mock_box1, mock_box2]

@@ -12,17 +12,26 @@ services:
       - ./data:/app/data          # Persist SQLite database
       - ./configs:/app/configs    # Zone configuration files
     environment:
-      - DATABASE_URL=sqlite:///data/store_intel.db
+      - DATABASE_URL=sqlite:////app/data/store_intel.db
       - LOG_LEVEL=INFO
       - ENVIRONMENT=development
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
 
-    # TODO: Add pipeline worker service when detection is implemented
-    # pipeline:
-    #   build: .
-    #   command: python -m scripts.run_pipeline --video /data/input.mp4
-    #   volumes:
-    #     - ./data:/app/data
-    #     - ./configs:/app/configs
-    #   depends_on:
-    #     - api
+  pipeline:
+    build: .
+    container_name: store-intel-pipeline
+    command: python -m scripts.run_pipeline --video /app/data/input.mp4
+    volumes:
+      - ./data:/app/data
+      - ./configs:/app/configs
+    environment:
+      - API_URL=http://api:8000
+    depends_on:
+      api:
+        condition: service_healthy

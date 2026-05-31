@@ -1,81 +1,739 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Store Intelligence System — Real-time retail analytics dashboard">
-    <title>Store Intelligence Dashboard</title>
+    <meta name="description" content="Store Intelligence System — Retail Operations Analytics">
+    <title>Store Intelligence Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Using Lucide Icons for premium SVGs -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body>
-    <div class="app" id="app">
-        <!-- Header -->
-        <header class="header" id="header">
-            <h1>Store Intelligence</h1>
-            <div class="header-controls">
-                <select id="store-selector">
-                    <option value="test_store">Test Store</option>
-                    <option value="store_001">Store 001</option>
-                </select>
-                <select id="window-selector">
-                    <option value="1h">Last 1 Hour</option>
-                    <option value="1d">Last 24 Hours</option>
-                    <option value="7d">Last 7 Days</option>
-                </select>
-                <span class="status-badge" id="connection-status">Disconnected</span>
+    <div class="app-container" id="app">
+        <!-- ── Left Sidebar ──────────────────────────────────────── -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-icon">
+                    <i data-lucide="store"></i>
+                </div>
+                <div class="brand-text-container">
+                    <span class="brand-text">Store Intelligence</span>
+                    <span class="brand-subtext">AI Retail Analytics</span>
+                </div>
             </div>
-        </header>
 
-        <!-- KPI Cards -->
-        <section class="kpi-grid" id="kpi-grid">
-            <!-- TODO: Populate with real-time KPI data via WebSocket -->
-            <div class="kpi-card" id="kpi-visitors">
-                <span class="kpi-label">Unique Visitors</span>
-                <span class="kpi-value" id="kpi-visitors-value">—</span>
-            </div>
-            <div class="kpi-card" id="kpi-conversion">
-                <span class="kpi-label">Conversion Rate</span>
-                <span class="kpi-value" id="kpi-conversion-value">—</span>
-            </div>
-            <div class="kpi-card" id="kpi-dwell">
-                <span class="kpi-label">Avg Dwell Time</span>
-                <span class="kpi-value" id="kpi-dwell-value">—</span>
-            </div>
-            <div class="kpi-card" id="kpi-queue">
-                <span class="kpi-label">Queue Depth</span>
-                <span class="kpi-value" id="kpi-queue-value">—</span>
-            </div>
-            <div class="kpi-card" id="kpi-abandonment">
-                <span class="kpi-label">Abandonment Rate</span>
-                <span class="kpi-value" id="kpi-abandonment-value">—</span>
-            </div>
-        </section>
+            <nav class="sidebar-nav">
+                <div class="nav-section">MAIN</div>
+                <a href="#" class="nav-link active" data-target="page-dashboard">
+                    <i data-lucide="layout-dashboard"></i> Dashboard
+                </a>
+                <a href="#" class="nav-link" data-target="page-overview">
+                    <i data-lucide="server"></i> System Overview
+                </a>
+                <a href="#" class="nav-link" data-target="page-camera-intel">
+                    <i data-lucide="cctv"></i> Camera Intelligence
+                </a>
 
-        <!-- Charts Row -->
-        <section class="charts-grid" id="charts-grid">
-            <!-- TODO: Initialize Chart.js charts -->
-            <div class="chart-card" id="funnel-chart-card">
-                <h2>Visitor Funnel</h2>
-                <canvas id="funnel-chart"></canvas>
-            </div>
-            <div class="chart-card" id="heatmap-chart-card">
-                <h2>Zone Heatmap</h2>
-                <canvas id="heatmap-chart"></canvas>
-            </div>
-        </section>
+                <div class="nav-section">ANALYSIS</div>
+                <a href="#" class="nav-link" data-target="page-events">
+                    <i data-lucide="activity"></i> Events & Alerts
+                </a>
+                <a href="#" class="nav-link" data-target="page-analytics">
+                    <i data-lucide="line-chart"></i> Analytics
+                </a>
+                <a href="#" class="nav-link" data-target="page-reports">
+                    <i data-lucide="file-text"></i> Reports
+                </a>
 
-        <!-- Anomaly Feed -->
-        <section class="anomaly-feed" id="anomaly-feed">
-            <h2>Anomaly Alerts</h2>
-            <div class="anomaly-list" id="anomaly-list">
-                <!-- TODO: Populate with real-time anomaly alerts -->
-                <p class="empty-state">No anomalies detected</p>
+                <div class="nav-section">SYSTEM</div>
+                <a href="#" class="nav-link" data-target="page-architecture">
+                    <i data-lucide="git-merge"></i> Architecture
+                </a>
+                <a href="/docs" target="_blank" class="nav-link">
+                    <i data-lucide="book-open"></i> API Docs
+                </a>
+                <a href="#" class="nav-link" data-target="page-settings">
+                    <i data-lucide="settings"></i> Settings
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <!-- Footer area, avatar moved to top bar -->
             </div>
-        </section>
+        </aside>
+
+        <!-- ── Main Content Area ─────────────────────────────────── -->
+        <div class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+                    <input type="text" placeholder="Search cameras, zones, or events...">
+                </div>
+                <div class="top-bar-right">
+                    <span class="live-badge" id="top-ws-status">
+                        <span class="pulse-dot"></span> Live
+                    </span>
+                    <button class="icon-btn">
+                        <i data-lucide="bell"></i>
+                    </button>
+                    <button class="icon-btn">
+                        <i data-lucide="help-circle"></i>
+                    </button>
+                    <div class="user-avatar-top">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=7C3AED&color=fff" alt="User">
+                    </div>
+                </div>
+            </header>
+
+            <main class="pages-wrapper">
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <!-- PAGE: DASHBOARD -->
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <div id="page-dashboard" class="page active">
+                    <!-- Controls -->
+                    <div class="page-controls">
+                        <h1 class="page-title">Operations Dashboard</h1>
+                        <div class="controls-right">
+                            <select id="store-selector" class="control-select">
+                                <option value="test_store">Test Store</option>
+                                <option value="store_001">Store 001</option>
+                            </select>
+                            <select id="window-selector" class="control-select">
+                                <option value="1h">Last 1 Hour</option>
+                                <option value="1d">Last 24 Hours</option>
+                                <option value="7d" selected>Last 7 Days</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- SaaS Hero Section -->
+                    <section class="saas-hero">
+                        <div class="hero-left">
+                            <h2 class="hero-title">Store Intelligence Platform</h2>
+                            <p class="hero-subtitle">AI-powered retail analytics from CCTV footage using YOLOv8 and
+                                ByteTrack.</p>
+
+                            <div class="hero-badges">
+                                <span class="tech-badge"><i data-lucide="video"></i> 5 Cameras</span>
+                                <span class="tech-badge"><i data-lucide="cpu"></i> YOLOv8</span>
+                                <span class="tech-badge"><i data-lucide="crosshair"></i> ByteTrack</span>
+                                <span class="tech-badge"><i data-lucide="zap"></i> Real-Time Events</span>
+                                <span class="tech-badge"><i data-lucide="wifi"></i> WebSocket Live</span>
+                            </div>
+
+                            <div class="hero-actions">
+                                <button class="btn btn-primary"
+                                    onclick="document.querySelector('.nav-link[data-target=\'page-camera-intel\']').click()">View
+                                    Camera Intelligence</button>
+                                <button class="btn btn-secondary"
+                                    onclick="document.querySelector('.nav-link[data-target=\'page-architecture\']').click()">View
+                                    Architecture</button>
+                            </div>
+                        </div>
+                        <div class="hero-right">
+                            <!-- Abstract Graphic -->
+                            <div class="abstract-graphic">
+                                <div class="graphic-node store-node"><i data-lucide="store"></i></div>
+                                <div class="graphic-line h-line"></div>
+                                <div class="graphic-node cam-node top"><i data-lucide="cctv"></i></div>
+                                <div class="graphic-node cam-node bottom"><i data-lucide="cctv"></i></div>
+                                <div class="graphic-line v-line"></div>
+                                <div class="graphic-node analytics-node"><i data-lucide="bar-chart-2"></i></div>
+
+                                <div class="floating-card c1">
+                                    <div class="bar w-60"></div>
+                                    <div class="bar w-80"></div>
+                                    <div class="bar w-40"></div>
+                                </div>
+                                <div class="floating-card c2">
+                                    <div class="pulse-ring"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Store Snapshot Section -->
+                    <h3 class="section-heading">Store Snapshot</h3>
+                    <section class="store-snapshot">
+                        <div class="snapshot-pipeline">
+                            <div class="snapshot-step">
+                                <span class="step-label">Input</span>
+                                <strong>5 Active Cameras</strong>
+                                <span class="step-sub">YOLOv8 Detection</span>
+                            </div>
+                            <i data-lucide="arrow-right" class="snapshot-arrow"></i>
+                            <div class="snapshot-step">
+                                <span class="step-label">Spatial Mapping</span>
+                                <strong><span id="landing-active-zones">6</span> Mapped Zones</strong>
+                                <span class="step-sub">Config JSONs</span>
+                            </div>
+                            <i data-lucide="arrow-right" class="snapshot-arrow"></i>
+                            <div class="snapshot-step">
+                                <span class="step-label">Temporal Logic</span>
+                                <strong><span id="landing-total-events">—</span> Events</strong>
+                                <span class="step-sub">ByteTrack Tracker</span>
+                            </div>
+                            <i data-lucide="arrow-right" class="snapshot-arrow"></i>
+                            <div class="snapshot-step">
+                                <span class="step-label">Live Output</span>
+                                <strong>Analytics APIs</strong>
+                                <span class="step-sub" id="landing-ws-status">Disconnected</span>
+                            </div>
+                        </div>
+
+                        <div class="snapshot-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Store Name</span>
+                                <span class="detail-value">Test Store</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Detection Engine</span>
+                                <span class="detail-value">YOLOv8</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Tracking Engine</span>
+                                <span class="detail-value">ByteTrack</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Database</span>
+                                <span class="detail-value">SQLite</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Analytics Modules</span>
+                                <span class="detail-value">Funnel, Heatmap, Anomalies</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Analytics KPI Row -->
+                    <h3 class="section-heading">Key Performance Indicators</h3>
+                    <section class="kpi-grid" id="kpi-grid">
+                        <div class="kpi-card" id="kpi-visitors">
+                            <div class="kpi-header">
+                                <span class="kpi-label">Unique Visitors</span>
+                                <div class="kpi-icon-container"><i data-lucide="users" class="kpi-icon"></i></div>
+                            </div>
+                            <span class="kpi-value" id="kpi-visitors-value">—</span>
+                        </div>
+                        <div class="kpi-card" id="kpi-conversion">
+                            <div class="kpi-header">
+                                <span class="kpi-label">Conversion Rate</span>
+                                <div class="kpi-icon-container"><i data-lucide="shopping-cart" class="kpi-icon"></i>
+                                </div>
+                            </div>
+                            <span class="kpi-value" id="kpi-conversion-value">—</span>
+                        </div>
+                        <div class="kpi-card" id="kpi-dwell">
+                            <div class="kpi-header">
+                                <span class="kpi-label">Avg Dwell Time</span>
+                                <div class="kpi-icon-container"><i data-lucide="clock" class="kpi-icon"></i></div>
+                            </div>
+                            <span class="kpi-value" id="kpi-dwell-value">—</span>
+                        </div>
+                        <div class="kpi-card" id="kpi-queue">
+                            <div class="kpi-header">
+                                <span class="kpi-label">Queue Depth</span>
+                                <div class="kpi-icon-container"><i data-lucide="users" class="kpi-icon"></i></div>
+                            </div>
+                            <span class="kpi-value" id="kpi-queue-value">—</span>
+                        </div>
+                        <div class="kpi-card" id="kpi-abandonment">
+                            <div class="kpi-header">
+                                <span class="kpi-label">Abandonment Rate</span>
+                                <div class="kpi-icon-container"><i data-lucide="user-minus" class="kpi-icon"></i></div>
+                            </div>
+                            <span class="kpi-value" id="kpi-abandonment-value">—</span>
+                        </div>
+                    </section>
+
+                    <!-- Charts Row -->
+                    <section class="charts-grid" id="charts-grid">
+                        <div class="chart-card" id="funnel-chart-card">
+                            <div class="chart-header">
+                                <h2>Customer Journey Funnel</h2>
+                                <span class="chart-subtitle">Tracking sequential conversion drop-offs</span>
+                            </div>
+                            <div class="funnel-container">
+                                <canvas id="funnel-chart"></canvas>
+                            </div>
+                            <div id="funnel-dropoffs" class="funnel-dropoffs-container"></div>
+                        </div>
+                        <div class="chart-card" id="heatmap-chart-card">
+                            <div class="chart-header">
+                                <h2>Zone Traffic Heatmap</h2>
+                                <span class="chart-subtitle">Most visited areas inside the store</span>
+                            </div>
+                            <div class="heatmap-container" style="position: relative; height: 300px;">
+                                <canvas id="heatmap-chart"></canvas>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div style="height: 40px;"></div> <!-- Spacer -->
+                </div>
+
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <!-- PAGE: SYSTEM OVERVIEW -->
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <div id="page-overview" class="page">
+                    <div class="page-controls">
+                        <h1 class="page-title">System Overview</h1>
+                        <span class="status-badge" id="connection-status">Disconnected</span>
+                    </div>
+
+                    <div class="overview-grid">
+                        <!-- Column 1 -->
+                        <div class="info-card">
+                            <h3>Store Information</h3>
+                            <ul class="info-list">
+                                <li><span class="info-label">Store Name</span><span class="info-val">Test Store</span>
+                                </li>
+                                <li><span class="info-label">Active Analytics Window</span><span class="info-val"
+                                        id="active-window-label">Last 7 Days</span></li>
+                                <li><span class="info-label">Database</span><span class="info-val">SQLite</span></li>
+                                <li><span class="info-label">Detection Engine</span><span class="info-val">YOLOv8</span>
+                                </li>
+                                <li><span class="info-label">Tracking Engine</span><span
+                                        class="info-val">ByteTrack</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- Column 2 -->
+                        <div class="info-card">
+                            <h3>Technology Stack</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag">YOLOv8</span>
+                                <span class="tech-tag">ByteTrack</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">SQLite</span>
+                                <span class="tech-tag">WebSocket</span>
+                                <span class="tech-tag">Chart.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <!-- PAGE: CAMERA INTELLIGENCE -->
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <div id="page-camera-intel" class="page">
+                    <div class="page-controls">
+                        <h1 class="page-title">Camera Monitoring</h1>
+                    </div>
+
+                    <div class="camera-selector">
+                        <button class="cam-tab active" data-index="0">CAM 1</button>
+                        <button class="cam-tab" data-index="1">CAM 2</button>
+                        <button class="cam-tab" data-index="2">CAM 3</button>
+                        <button class="cam-tab" data-index="3">CAM 4</button>
+                        <button class="cam-tab" data-index="4">CAM 5</button>
+                    </div>
+
+                    <div class="camera-intel-layout">
+                        <!-- Left Column: Video Player -->
+                        <div class="video-panel chart-card">
+                            <div class="video-container">
+                                <video id="cam-video-player" src="assets/videos/cam1.mp4" autoplay loop muted
+                                    controls></video>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Information Panel -->
+                        <div class="info-panel chart-card" id="reviewer-dashboard-panel">
+
+                            <div class="business-section">
+                                <div class="section-header-row">
+                                    <h3><i data-lucide="cctv"></i> Camera Status</h3>
+                                    <span class="status-pill">Live feed</span>
+                                </div>
+
+                                <div class="business-grid">
+                                    <div class="meta-item">
+                                        <span class="meta-label">Camera ID</span>
+                                        <span class="meta-value" id="cam-info-id">CAM 1</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Video Source</span>
+                                        <span class="meta-value" id="cam-info-file">cam1.mp4</span>
+                                    </div>
+
+                                    <div class="meta-item full-width">
+                                        <span class="meta-label">Configured Zones</span>
+                                        <div class="zone-tags" id="cam-active-zones">
+                                            <span class="zone-badge"
+                                                style="background:#cbd5e0; color:#4a5568;">Loading...</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="meta-item">
+                                        <span class="meta-label">Detection</span>
+                                        <span class="meta-value">YOLOv8 Person Detection</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Tracking</span>
+                                        <span class="meta-value">ByteTrack Multi-Object</span>
+                                    </div>
+
+                                    <div class="meta-item">
+                                        <span class="meta-label">Event Generation</span>
+                                        <div class="capabilities-list">
+                                            <span class="cap-item"><i data-lucide="check"></i> Zone Enter / Exit</span>
+                                            <span class="cap-item"><i data-lucide="check"></i> Billing Queue
+                                                Events</span>
+                                            <span class="cap-item"><i data-lucide="check"></i> Purchase Proxy
+                                                Events</span>
+                                        </div>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">Analytics Impact</span>
+                                        <div class="capabilities-list">
+                                            <span class="cap-item"><i data-lucide="pie-chart"></i> Funnel
+                                                Analytics</span>
+                                            <span class="cap-item"><i data-lucide="map"></i> Heatmap Analytics</span>
+                                            <span class="cap-item"><i data-lucide="alert-triangle"></i> Anomaly
+                                                Detection</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="business-section live-ops-section"
+                                    style="margin-top: 24px; border-top: 1px solid var(--border-color); padding-top: 24px; position: relative;">
+                                    <div class="section-header-row">
+                                        <h3><i data-lucide="radio"></i> Live Operations</h3>
+                                        <span class="live-indicator" id="live-indicator-dot"></span>
+                                    </div>
+                                    <div class="business-grid" style="margin-top: 16px;">
+                                        <div class="meta-item">
+                                            <span class="meta-label">Current Visitors</span>
+                                            <strong class="meta-value" id="live-active-visitors"
+                                                style="font-size: 20px;">0</strong>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">Active Tracks</span>
+                                            <strong class="meta-value" id="live-active-tracks"
+                                                style="font-size: 20px;">0</strong>
+                                        </div>
+                                        <div class="meta-item full-width">
+                                            <span class="meta-label">Zone Occupancy</span>
+                                            <div class="zone-tags" id="live-zone-occupancy"
+                                                style="display: flex; flex-direction: column; gap: 8px;">
+                                                <span
+                                                    style="font-size: 13px; color: var(--text-muted); font-style: italic;">Waiting
+                                                    for live telemetry...</span>
+                                            </div>
+                                        </div>
+                                        <div class="meta-item full-width" style="margin-top: 8px;">
+                                            <span class="meta-label">Last Telemetry Event</span>
+                                            <span class="meta-value" id="live-last-event"
+                                                style="font-size: 12px;">—</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="business-section"
+                                    style="margin-top: 24px; border-top: 1px solid var(--border-color); padding-top: 24px;">
+                                    <div class="section-header-row">
+                                        <h3><i data-lucide="server"></i> System Status</h3>
+                                    </div>
+
+                                    <div class="business-grid">
+                                        <div class="meta-item">
+                                            <span class="meta-label">WebSocket Status</span>
+                                            <span class="live-badge" id="cam-ws-status" style="width: max-content;">
+                                                <span class="pulse-dot"></span> Disconnected
+                                            </span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <span class="meta-label">Last Analytics Refresh</span>
+                                            <span class="meta-value" id="last-refresh-time">—</span>
+                                        </div>
+
+                                        <div class="meta-item full-width">
+                                            <span class="meta-label">Processing Pipeline</span>
+                                            <div class="horizontal-pipeline">
+                                                <div class="h-pipe-node">Video</div>
+                                                <i data-lucide="arrow-right"></i>
+                                                <div class="h-pipe-node">YOLOv8</div>
+                                                <i data-lucide="arrow-right"></i>
+                                                <div class="h-pipe-node">ByteTrack</div>
+                                                <i data-lucide="arrow-right"></i>
+                                                <div class="h-pipe-node">Zones</div>
+                                                <i data-lucide="arrow-right"></i>
+                                                <div class="h-pipe-node">Events</div>
+                                                <i data-lucide="arrow-right"></i>
+                                                <div class="h-pipe-node highlight">Analytics</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ── OPERATIONAL MONITORING CONSOLE (BELOW VIDEO) ── -->
+                        <div class="op-console-container" style="margin-top: 32px; grid-column: 1 / -1;">
+
+                            <!-- 7. Professional Empty State Handling -->
+                            <div class="empty-telemetry-banner">
+                                <i data-lucide="info"></i>
+                                <span>Real-time visitor telemetry is not exposed by the current backend APIs. Live
+                                    operational monitoring relies on real-time event aggregation APIs.</span>
+                            </div>
+
+                            <div class="op-grid-row"
+                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px;">
+
+                                <!-- 1. Monitoring Header & 6. Camera Health -->
+                                <div class="chart-card">
+                                    <h3><i data-lucide="activity"></i> Monitoring Overview</h3>
+
+                                    <div class="health-badges" id="cam-health-badges"
+                                        style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px; margin-bottom: 24px;">
+                                        <div class="h-badge success"><i data-lucide="check-circle"></i> Video Source
+                                            Loaded</div>
+                                        <div class="h-badge success" id="h-badge-config"><i
+                                                data-lucide="check-circle"></i> Zone Config Loaded</div>
+                                        <div class="h-badge" id="h-badge-ws"><i data-lucide="loader"></i> WebSocket
+                                            Status</div>
+                                        <div class="h-badge success"><i data-lucide="check-circle"></i> Analytics
+                                            Refresh Active</div>
+                                    </div>
+
+                                    <div class="overview-stats"
+                                        style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; padding-top: 16px; border-top: 1px solid var(--border-color);">
+                                        <div class="stat-item" style="display: flex; flex-direction: column;">
+                                            <span
+                                                style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Active
+                                                Camera</span>
+                                            <strong id="mon-cam-id-bottom"
+                                                style="font-size: 16px; color: var(--text-main);">CAM 1</strong>
+                                        </div>
+                                        <div class="stat-item" style="display: flex; flex-direction: column;">
+                                            <span
+                                                style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Configured
+                                                Zones</span>
+                                            <strong id="mon-cam-zones-bottom"
+                                                style="font-size: 16px; color: var(--text-main);">0</strong>
+                                        </div>
+                                        <div class="stat-item" style="display: flex; flex-direction: column;">
+                                            <span
+                                                style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Last
+                                                Refresh</span>
+                                            <strong id="mon-cam-refresh-bottom"
+                                                style="font-size: 16px; color: var(--text-main);">—</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 5. Zone Configuration Panel & 4. Live Analytics Impact -->
+                                <div class="chart-card">
+                                    <h3><i data-lucide="map"></i> Zone Configuration & Impact</h3>
+
+                                    <div id="zone-config-panel" class="zone-details-list"
+                                        style="margin-top: 16px; display: flex; flex-direction: column; gap: 12px; max-height: 150px; overflow-y: auto;">
+                                        <!-- populated by js -->
+                                    </div>
+
+                                    <div class="analytics-impact-box"
+                                        style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-color);">
+                                        <span class="impact-title"
+                                            style="font-size: 12px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 12px;">This
+                                            camera contributes to:</span>
+                                        <div class="impact-tags" id="cam-impact-tags"
+                                            style="display: flex; flex-wrap: wrap; gap: 8px;">
+                                            <!-- populated by js based on zones -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2. How this camera generates business metrics -->
+                            <div class="chart-card pipeline-explainer-card" style="margin-top: 24px;">
+                                <h3 style="margin-bottom: 24px;"><i data-lucide="git-merge"></i> How This Camera
+                                    Generates Business Metrics</h3>
+                                <div class="explainer-pipeline"
+                                    style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;">
+                                    <div class="exp-step">
+                                        <div class="step-icon"><i data-lucide="video"></i></div><strong>Video
+                                            Feed</strong>
+                                        <p>Raw CCTV ingested at 5 FPS.</p>
+                                    </div>
+                                    <i data-lucide="arrow-right" class="exp-arrow"></i>
+                                    <div class="exp-step">
+                                        <div class="step-icon"><i data-lucide="cpu"></i></div><strong>YOLOv8</strong>
+                                        <p>Detects persons in frame.</p>
+                                    </div>
+                                    <i data-lucide="arrow-right" class="exp-arrow"></i>
+                                    <div class="exp-step">
+                                        <div class="step-icon"><i data-lucide="crosshair"></i></div>
+                                        <strong>ByteTrack</strong>
+                                        <p>Assigns tracking IDs.</p>
+                                    </div>
+                                    <i data-lucide="arrow-right" class="exp-arrow"></i>
+                                    <div class="exp-step">
+                                        <div class="step-icon"><i data-lucide="map-pin"></i></div><strong>Zone
+                                            Map</strong>
+                                        <p>Checks intersection.</p>
+                                    </div>
+                                    <i data-lucide="arrow-right" class="exp-arrow"></i>
+                                    <div class="exp-step">
+                                        <div class="step-icon"><i data-lucide="activity"></i></div>
+                                        <strong>Events</strong>
+                                        <p>ENTRY / EXIT telemetry.</p>
+                                    </div>
+                                    <i data-lucide="arrow-right" class="exp-arrow"></i>
+                                    <div class="exp-step">
+                                        <div class="step-icon"><i data-lucide="database"></i></div>
+                                        <strong>SQLite</strong>
+                                        <p>Persists events.</p>
+                                    </div>
+                                    <i data-lucide="arrow-right" class="exp-arrow"></i>
+                                    <div class="exp-step highlight">
+                                        <div class="step-icon"><i data-lucide="bar-chart-2"></i></div>
+                                        <strong>Analytics</strong>
+                                        <p>Funnels & Heatmaps.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 3. Camera Coverage Summary -->
+                            <div class="chart-card" style="margin-top: 24px;">
+                                <h3 style="margin-bottom: 24px;"><i data-lucide="layout"></i> Full System Coverage
+                                    Summary</h3>
+                                <div class="coverage-grid" id="full-coverage-grid"
+                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                                    <!-- Populated by js -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════════════════════ -->
+                    <!-- PAGE: EVENTS (Placeholder) -->
+                    <!-- ═══════════════════════════════════════════════════════════ -->
+                    <div id="page-events" class="page">
+                        <div class="page-controls">
+                            <h1 class="page-title">Events & Alerts</h1>
+                        </div>
+                        <section class="anomaly-feed" id="anomaly-feed">
+                            <div class="info-card">
+                                <div class="chart-header">
+                                    <h2>Anomaly Alerts</h2>
+                                    <span class="chart-subtitle">System-detected behavioral outliers</span>
+                                </div>
+                                <div class="anomaly-list" id="anomaly-list">
+                                    <div class="empty-state">
+                                        <div class="empty-icon"><i data-lucide="check-circle"></i></div>
+                                        <p>System operating normally. No anomalies detected.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- ═══════════════════════════════════════════════════════════ -->
+                    <!-- PAGE: ARCHITECTURE -->
+                    <!-- ═══════════════════════════════════════════════════════════ -->
+                    <div id="page-architecture" class="page">
+                        <div class="page-controls">
+                            <h1 class="page-title">Pipeline Architecture</h1>
+                        </div>
+
+                        <div class="architecture-canvas">
+                            <div class="arch-node">
+                                <i data-lucide="cctv"></i>
+                                <div class="node-text">
+                                    <strong>CCTV Footage</strong>
+                                    <span>Raw RTSP feeds</span>
+                                </div>
+                            </div>
+                            <div class="arch-connector"></div>
+                            <div class="arch-node">
+                                <i data-lucide="cpu"></i>
+                                <div class="node-text">
+                                    <strong>YOLOv8 Detection</strong>
+                                    <span>Human bounding boxes</span>
+                                </div>
+                            </div>
+                            <div class="arch-connector"></div>
+                            <div class="arch-node">
+                                <i data-lucide="crosshair"></i>
+                                <div class="node-text">
+                                    <strong>ByteTrack Tracking</strong>
+                                    <span>Persistent object IDs</span>
+                                </div>
+                            </div>
+                            <div class="arch-connector"></div>
+                            <div class="arch-node">
+                                <i data-lucide="map"></i>
+                                <div class="node-text">
+                                    <strong>Zone Intelligence</strong>
+                                    <span>Centroid mapping to zones</span>
+                                </div>
+                            </div>
+                            <div class="arch-connector"></div>
+                            <div class="arch-node">
+                                <i data-lucide="zap"></i>
+                                <div class="node-text">
+                                    <strong>Event Generation</strong>
+                                    <span>Temporal state changes</span>
+                                </div>
+                            </div>
+                            <div class="arch-connector"></div>
+                            <div class="arch-node">
+                                <i data-lucide="database"></i>
+                                <div class="node-text">
+                                    <strong>Analytics Engine</strong>
+                                    <span>SQLite + FastAPI</span>
+                                </div>
+                            </div>
+                            <div class="arch-connector"></div>
+                            <div class="arch-node highlight-node">
+                                <i data-lucide="layout-dashboard"></i>
+                                <div class="node-text">
+                                    <strong>Store Dashboard</strong>
+                                    <span>WebSocket Live View</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Placeholders for other pages -->
+                    <div id="page-analytics" class="page">
+                        <div class="page-controls">
+                            <h1 class="page-title">Analytics Engine</h1>
+                        </div>
+                        <div class="empty-state">Coming soon</div>
+                    </div>
+                    <div id="page-reports" class="page">
+                        <div class="page-controls">
+                            <h1 class="page-title">Export Reports</h1>
+                        </div>
+                        <div class="empty-state">Coming soon</div>
+                    </div>
+                    <div id="page-settings" class="page">
+                        <div class="page-controls">
+                            <h1 class="page-title">Settings</h1>
+                        </div>
+                        <div class="empty-state">Coming soon</div>
+                    </div>
+            </main>
+        </div>
     </div>
 
-    <!-- Add Chart.js from CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
     <script src="app.js"></script>
 </body>
+
 </html>

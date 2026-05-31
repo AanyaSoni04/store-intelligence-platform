@@ -31,7 +31,7 @@ class TestFunnelAPI:
         assert response.status_code == 200
         data = response.json()
         assert data["store_id"] == sample_store.store_id
-        assert len(data["stages"]) == 4
+        assert len(data["stages"]) == 5
 
 
 class TestHeatmapAPI:

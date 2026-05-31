@@ -12,7 +12,8 @@ import logging
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from store_intel.config import settings
@@ -20,7 +21,10 @@ from store_intel.logging import setup_logging
 from store_intel.db.engine import init_db
 
 # Import route modules
-from store_intel.api import ingest, metrics, funnel, heatmap, anomalies, health, websocket
+from store_intel.api import ingest, metrics, funnel, heatmap, anomalies, health, websocket, camera, telemetry, staff
+
+import sqlite3
+from sqlalchemy.exc import OperationalError as SQLAlchemyOperationalError
 
 logger = logging.getLogger("store_intel")
 
@@ -50,6 +54,22 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+@app.exception_handler(SQLAlchemyOperationalError)
+async def sqlalchemy_operational_error_handler(request: Request, exc: SQLAlchemyOperationalError):
+    logger.error("Database OperationalError", exc_info=True)
+    return JSONResponse(
+        status_code=503,
+        content={"detail": "Service Unavailable: Database connection failed."}
+    )
+
+@app.exception_handler(sqlite3.OperationalError)
+async def sqlite3_operational_error_handler(request: Request, exc: sqlite3.OperationalError):
+    logger.error("SQLite OperationalError", exc_info=True)
+    return JSONResponse(
+        status_code=503,
+        content={"detail": "Service Unavailable: Database connection failed."}
+    )
+
 # ── Register routes ─────────────────────────────────────────
 app.include_router(health.router)
 app.include_router(ingest.router)
@@ -58,6 +78,9 @@ app.include_router(funnel.router)
 app.include_router(heatmap.router)
 app.include_router(anomalies.router)
 app.include_router(websocket.router)
+app.include_router(camera.router)
+app.include_router(telemetry.router)
+app.include_router(staff.router)
 
 # ── Serve dashboard static files ────────────────────────────
 dashboard_path = Path(__file__).resolve().parent.parent.parent / "dashboard"

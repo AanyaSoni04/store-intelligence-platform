@@ -49,7 +49,8 @@ class Visitor(Base):
     store_id = Column(String, ForeignKey("stores.store_id"), nullable=False, index=True)
     first_seen = Column(DateTime, default=lambda: datetime.now(timezone.utc))
     last_seen = Column(DateTime, default=lambda: datetime.now(timezone.utc))
-    is_staff = Column(Boolean, default=False)
+    is_staff = Column(Boolean, default=False, nullable=False)
+    merged_into = Column(String, ForeignKey("visitors.visitor_id"), nullable=True)
     visit_count = Column(Integer, default=1)
 
     # Relationships

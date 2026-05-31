@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 
 from store_intel.db.engine import get_db
 from store_intel.events.schemas import AnomalyResponse
+from store_intel.analytics.anomalies import detect_anomalies
 
 router = APIRouter(tags=["Analytics"])
 
@@ -20,15 +21,5 @@ def get_anomalies(
 ) -> AnomalyResponse:
     """
     Return detected anomalies for a store.
-
-    Anomaly types:
-        - unusual_dwell: visitor dwells > threshold in a zone
-        - queue_buildup: queue depth exceeds max
-        - empty_store: zero entries for extended period
-        - high_abandonment: abandonment rate above threshold
-
-    TODO: Implement anomaly detection in analytics/anomalies.py
-    TODO: Filter by severity if provided
     """
-    # TODO: Call analytics.anomalies.detect_anomalies(db, store_id, window, severity)
-    return AnomalyResponse(anomalies=[])
+    return detect_anomalies(db, store_id, window, severity)
