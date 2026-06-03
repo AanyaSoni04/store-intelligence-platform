@@ -15,6 +15,7 @@ from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 
 from store_intel.config import settings
 from store_intel.logging import setup_logging
@@ -52,6 +53,14 @@ app = FastAPI(
     version=settings.version,
     description="End-to-end pipeline converting CCTV footage into real-time retail analytics.",
     lifespan=lifespan,
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # In production, you might want to replace "*" with your Vercel URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 @app.exception_handler(SQLAlchemyOperationalError)

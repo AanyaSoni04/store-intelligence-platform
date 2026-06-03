@@ -16,9 +16,11 @@
 
 // ── Configuration ───────────────────────────────────────────
 
+const BACKEND_URL = 'https://store-intelligence-api-76n7.onrender.com'; // 🛑 REPLACE THIS WITH YOUR ACTUAL RENDER URL
+
 const CONFIG = {
-    apiBase: window.location.origin,
-    wsUrl: `ws://${window.location.host}/ws`,
+    apiBase: BACKEND_URL,
+    wsUrl: `${BACKEND_URL.replace('http', 'ws')}/ws`,
     pollInterval: 10000, // 10 second fallback polling
 };
 
@@ -256,7 +258,7 @@ function updateLastRefreshTime() {
 // ── WebSocket ───────────────────────────────────────────────
 
 function connectWebSocket() {
-    const ws = new WebSocket(`ws://${window.location.host}/ws`);
+    const ws = new WebSocket(CONFIG.wsUrl);
 
     ws.onopen = () => {
         const connectionStatus = document.getElementById('connection-status');
