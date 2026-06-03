@@ -1714,3 +1714,76 @@ body {
     width: 24px;
     height: 24px;
 }
+
+/* ── Architecture Pipeline ───────────────────────────────── */
+.architecture-canvas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 40px;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    margin-top: 24px;
+}
+
+.arch-node {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--bg-main);
+    border: 2px solid var(--border-color);
+    padding: 16px 24px;
+    border-radius: 12px;
+    width: 340px;
+    transition: all 0.3s;
+}
+
+.arch-node:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.arch-node .lucide {
+    width: 32px;
+    height: 32px;
+    color: var(--primary);
+    background: rgba(124, 58, 237, 0.1);
+    padding: 6px;
+    border-radius: 8px;
+}
+
+.arch-node.highlight-node {
+    border-color: var(--secondary);
+    background: rgba(168, 85, 247, 0.05);
+}
+
+.arch-node.highlight-node .lucide {
+    color: #fff;
+    background: var(--secondary);
+}
+
+.node-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.node-text strong {
+    font-size: 16px;
+    color: var(--text-main);
+}
+
+.node-text span {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.arch-connector {
+    width: 2px;
+    height: 32px;
+    background: var(--primary);
+    opacity: 0.5;
+}
