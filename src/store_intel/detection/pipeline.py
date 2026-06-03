@@ -76,7 +76,7 @@ class DetectionPipeline:
         if telemetry_payload != self._last_telemetry_state:
             try:
                 import requests
-                requests.post("http://localhost:8000/telemetry", json=telemetry_payload, timeout=2)
+                requests.post("https://store-intelligence-api-76n7.onrender.com/telemetry", json=telemetry_payload, timeout=2)
                 self._last_telemetry_state = telemetry_payload
                 self._last_telemetry_time = now
             except Exception as e:
@@ -276,7 +276,7 @@ class DetectionPipeline:
             for i in range(0, len(events_json), batch_size):
                 batch = events_json[i:i + batch_size]
                 resp = requests.post(
-                    "http://localhost:8000/events/ingest", 
+                    "https://store-intelligence-api-76n7.onrender.com/events/ingest", 
                     json={"events": batch},
                     timeout=10
                 )

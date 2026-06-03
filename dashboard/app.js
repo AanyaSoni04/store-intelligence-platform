@@ -27,7 +27,7 @@ const CONFIG = {
 // ── State ───────────────────────────────────────────────────
 
 let ws = null;
-let selectedStore = 'test_store';
+let selectedStore = 'my_store';
 let selectedWindow = '7d'; // Default to 7d to ensure real data is shown on load
 let funnelChart = null;
 let heatmapChart = null;
