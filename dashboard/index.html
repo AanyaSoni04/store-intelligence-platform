@@ -113,6 +113,15 @@
                         </div>
                     </div>
 
+                    <!-- Hackathon Empty State Warning -->
+                    <div id="hackathon-empty-warning" style="display: none; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: var(--radius); padding: 16px 24px; margin-bottom: 24px; align-items: center; gap: 16px;">
+                        <i data-lucide="info" style="color: var(--danger); min-width: 24px; height: 24px;"></i>
+                        <div>
+                            <h4 style="color: var(--danger); margin: 0 0 4px 0; font-size: 15px; font-weight: 700;">Dashboard Empty? (Hackathon Note)</h4>
+                            <p style="margin: 0; font-size: 13px; color: var(--text-main); line-height: 1.5;">Because our cloud database runs on a free tier, it resets when asleep. To generate beautiful live mock data and see the dashboard in action, please run <strong><code>python scripts/seed_remote.py</code></strong> in your terminal!</p>
+                        </div>
+                    </div>
+
                     <!-- SaaS Hero Section -->
                     <section class="saas-hero">
                         <div class="hero-left">

@@ -1,123 +1,96 @@
-# Store Intelligence System
+# 🛍️ Store Intelligence Platform
 
-> End-to-end pipeline converting CCTV footage into real-time retail analytics.
+> **An Edge-to-Cloud Computer Vision pipeline converting CCTV footage into real-time retail analytics.**
 
-## Overview
+Store Intelligence processes CCTV video to detect, track, and analyze customer behavior in retail stores. The system generates structured events from raw footage at the "Edge" and streams them to our Cloud API, powering a beautiful real-time analytics dashboard.
 
-Store Intelligence processes CCTV video to detect, track, and analyze customer behavior in retail stores. The system generates structured events from raw footage and serves real-time analytics via a REST API and live dashboard.
+**The Pipeline:** Raw CCTV → YOLOv8 Detection → ByteTrack Identity Tracking → Zone Logic → Telemetry Stream → FastAPI Analytics Engine → Vercel Live Dashboard
 
-**Pipeline:** Raw CCTV → Detection (YOLOv8 + ByteTrack) → Event Stream → Intelligence API → Live Dashboard
+---
 
-## Quick Start
+## 🌐 Live Project Links (Hackathon Reviewers)
 
-### Prerequisites
+Experience the project instantly without running any code:
 
-- Python 3.11+
-- Docker & Docker Compose
+*   📊 **Live Dashboard:** [https://store-intelligence-dashboard.vercel.app](https://store-intelligence-dashboard.vercel.app)
+*   📚 **Live API Docs (Swagger):** [https://store-intelligence-api-76n7.onrender.com/docs](https://store-intelligence-api-76n7.onrender.com/docs)
 
-### Run with Docker
+> 🚨 **Hackathon Note:** Our backend API is hosted on Render's free tier, which goes to sleep and resets its temporary database after 15 minutes of inactivity. **If the dashboard appears empty, please see the "Seeding the Database" section below!**
 
+---
+
+## 💻 How to Run Locally
+
+To see the true magic of the Edge-to-Cloud architecture, you can run the YOLOv8 tracking pipeline on your own machine. As it processes a video, it will stream live telemetry directly to the hosted dashboard!
+
+### 1. Prerequisites
+- Python 3.9+
+- A sample `.mp4` CCTV or retail video file
+
+### 2. Setup
 ```bash
-docker compose up --build
-```
+# Clone the repository
+git clone https://github.com/AanyaSoni04/store-intelligence-platform.git
+cd store-intelligence-platform
 
-The API will be available at `http://localhost:8000`:
-- **API Docs:** http://localhost:8000/docs
-- **Health Check:** http://localhost:8000/health
-- **Dashboard:** http://localhost:8000/dashboard
-
-### Run Locally (Development)
-
-```bash
-# Install dependencies
+# Install all required dependencies
 pip install -r requirements.txt
-
-# Set PYTHONPATH
-export PYTHONPATH=src  # Linux/Mac
-set PYTHONPATH=src     # Windows
-
-# Run the API server
-uvicorn store_intel.main:app --reload --port 8000
-
-# Run tests
-pytest
 ```
 
-## Architecture
+### 3. Run the Computer Vision Pipeline
+Place your sample video in the `data/` folder and run the pipeline. This script runs the YOLOv8 AI locally on your GPU/CPU, and streams the extracted analytics directly to our live Render API!
 
+```bash
+python scripts/run_pipeline.py --video data/your_sample_video.mp4 --camera CAM1
 ```
-CCTV Video → Frame Decoder → YOLOv8 Detector → ByteTrack Tracker
-    → Zone Manager → Event FSM → SQLite (events table)
-    → FastAPI Analytics API → WebSocket → Live Dashboard
+*Once it starts processing frames, open the [Live Dashboard](https://store-intelligence-dashboard.vercel.app) to watch the charts update in real-time!*
+
+---
+
+## 🌱 Seeding the Database (If Empty)
+
+Because our cloud API runs on a free tier, it routinely wipes its local SQLite database to save space. If you open the dashboard and the metrics are at `0`, you can instantly populate it with thousands of realistic simulated events!
+
+Run this in your terminal:
+```bash
+python scripts/seed_remote.py
 ```
+*Wait ~10 seconds, refresh the Vercel dashboard, and enjoy the data visualization!*
 
-<!-- TODO: Add architecture diagram image -->
+---
 
-## API Endpoints
+## 🏗️ Architecture Stack
+
+*   **Computer Vision (Edge):** `Python`, `YOLOv8` (Ultralytics), `ByteTrack`, `OpenCV`
+*   **Backend API (Cloud):** `FastAPI`, `SQLite`, `SQLAlchemy`, Hosted on `Render`
+*   **Frontend Dashboard:** `Vanilla JS`, `HTML/CSS`, `Chart.js`, Hosted on `Vercel`
+
+## 📡 Core API Endpoints
 
 | Endpoint | Method | Description |
 |---|---|---|
-| `/health` | GET | System health check |
-| `/events/ingest` | POST | Batch event ingestion |
-| `/stores/{id}/metrics` | GET | KPI snapshot (visitors, conversion, dwell, queue, abandonment) |
-| `/stores/{id}/funnel` | GET | Visitor funnel with drop-off rates |
-| `/stores/{id}/heatmap` | GET | Zone visit frequency |
-| `/stores/{id}/anomalies` | GET | Detected anomalies |
+| `/events/ingest` | POST | Edge devices push batch telemetry events here |
+| `/stores/{id}/metrics` | GET | Core KPI snapshot (visitors, conversion, queue depth) |
+| `/stores/{id}/funnel` | GET | Customer journey funnel with drop-off rates |
+| `/stores/{id}/heatmap` | GET | Zone visit frequency for store layout optimization |
+| `/stores/{id}/anomalies` | GET | Automated alerts (e.g. high queue abandonment) |
 
-## Project Structure
+---
 
-```
-├── src/store_intel/       # Main application package
-│   ├── api/               # FastAPI route handlers
+## 🛠️ Project Structure
+
+```text
+├── src/store_intel/       # Main backend application package
+│   ├── api/               # FastAPI route handlers & endpoints
 │   ├── analytics/         # KPI computation engines
-│   ├── db/                # SQLAlchemy models + CRUD
-│   ├── detection/         # CCTV processing pipeline
-│   ├── events/            # Pydantic schemas + event FSM
-│   └── tracking/          # Visitor identity + staff exclusion
-├── dashboard/             # Browser-based live dashboard
-├── tests/                 # Pytest unit + integration tests
-├── configs/               # Zone polygon configuration
-├── scripts/               # CLI utilities
-├── DESIGN.md              # Design decisions and trade-offs
+│   ├── db/                # SQLAlchemy models + CRUD operations
+│   ├── detection/         # YOLOv8 + ByteTrack processing pipeline
+│   └── events/            # Pydantic schemas + Event state machine
+├── dashboard/             # Browser-based live dashboard (Vercel)
+├── scripts/               # CLI utilities (Run pipeline, Seed database)
+├── DESIGN.md              # Design decisions and architectural trade-offs
 └── CHOICES.md             # Technology rationale
 ```
 
-## Detection Pipeline Usage
-
-The pipeline processes video clips (using **YOLOv8** for detection and **ByteTrack** for tracking), maps spatial movements against configured zones to generate **events**, and performs **SQLite ingestion** via the backend API. These events then automatically populate the real-time **Metrics dashboard**.
-
-To run the pipeline against a local video clip:
-
-```bash
-# Make sure the API server is running first!
-python scripts/run_pipeline.py \
-    --video dashboard/assets/videos/cam1.mp4 \
-    --camera CAM1 \
-    --store test_store \
-    --zone-config configs/zones/cam_001.json
-```
-
-**Where does the output go?**
-1. **Local File:** All events are saved locally for debugging to `data/generated_events.json`.
-2. **API Ingestion:** The script automatically pushes the events in batches to `POST /events/ingest`.
-3. **Database:** The API persists these events into the SQLite `events` table.
-4. **Dashboard:** The metrics dashboard queries the database to compute live KPIs (funnels, heatmaps, queue times).
-
-<!-- TODO: Add sections for:
-    - Configuration guide
-    - Zone setup guide
-    - Sample API requests/responses
-    - Contributing guidelines
--->
-
-## Testing
-
-```bash
-pytest -v                    # Run all tests
-pytest tests/unit/           # Unit tests only
-pytest tests/integration/    # Integration tests only
-```
-
-## License
-
-<!-- TODO: Add license -->
+### 🏆 *Built for the AI Hackathon*
+*Transforming physical retail, one frame at a time.*

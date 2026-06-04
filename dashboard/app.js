@@ -245,6 +245,16 @@ function updateKPICards(metrics) {
     if (kpiElements.dwell) kpiElements.dwell.textContent = data.avg_dwell_seconds != null ? `${Math.round(data.avg_dwell_seconds)}s` : '—';
     if (kpiElements.queue) kpiElements.queue.textContent = data.queue_depth ?? '—';
     if (kpiElements.abandonment) kpiElements.abandonment.textContent = data.abandonment_rate != null ? `${(data.abandonment_rate * 100).toFixed(1)}%` : '—';
+
+    // Show hackathon warning if database is empty
+    const warningEl = document.getElementById('hackathon-empty-warning');
+    if (warningEl) {
+        warningEl.style.display = visitors === 0 ? 'flex' : 'none';
+        // Need to re-initialize the new icon since it's unhidden/dynamically shown
+        if (visitors === 0 && window.lucide) {
+            window.lucide.createIcons();
+        }
+    }
 }
 
 function updateLastRefreshTime() {
